@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.App-header {
+	width: 100%; 
+	height: 80px; 
+	position: fixed;
+	z-index: 999;
+	display: flex;
+	display: -webkit-flex;
+  	justify-content: center;
+	align-items: center;
+	background-color: #000;
+}
+
+
+.logo-pic {
+	flex-shrink: 0;
+	width: 30px; 
+	height: 63px;
+	margin-top: 57px;
+}
+
+.logo-text {
+	flex-shrink: 0;
+	width: 50px; 
+	height: 26.95px;
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	background-color: #000;
+}
+
+.items-main-cates-clearfix {
+	flex-shrink: 0;
+	display: flex;
+	display: -webkit-flex;
+	padding: 20px;
+	
+}
+.items-main-cates {
+	list-style-type: none;
+}
+
+.head-instutite {
+	position: relative;
+	bottom: 3px;
+	align-items:center;
+	font-size:16px;
+	text-decoration:none;
+	color: #fff;
+}
+.head-instutite:hover {
+	color:#ffc81f;
+}
+.head-instutite > img {
+	position: relative;
+	top: 5px;
+	margin-right: 12px;
+}
+
+
+.head-column {
+	position: relative;
+	bottom: 3px;
+	align-items:center;
+	margin-left: 40px;
+	font-size:16px;
+	text-decoration:none;
+	color: #fff;
+}
+.head-column:hover {
+	color:#ffc81f;
+}
+.head-column > img {
+	position: relative;
+	top: 5px;
+	margin-right: 12px;
+}
+
+.item-cates {
+	flex-shrink: 0;
+	display: -webkit-flex;
+	line-height: 75px;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #4d4d4d;
+}
+
+.item-cate {
+	list-style-type: none;
+	padding-left: 20px;
+}
+.item-cate > a{
+	text-decoration:none;
+	color: #818181;
+	font-size:14px;
+}
+.item-cate > a:hover{
+	color: #ffc81f;
+}
+
+.dropdown {
+	position: relative;
+	right: 25px;
+	z-index: 66;
+	background-color: #000;
+	list-style-type: none;
+	padding-left: 20px;
+	padding-right: 0px;
+}
+.dropdown > a{
+	flex-shrink: 0;
+	text-decoration:none;
+	color: #fff;
+	font-size:16px;
+}
+.arrow-toDown {
+	position: relative;
+	bottom:3px;
+	margin-left: 5px;
+	font-size: 0;  
+    line-height: 0;  
+    border-width: 5px;  
+    border-color: #fff;
+    border-bottom-width: 0;  
+    border-style: dashed;  
+    border-top-style: solid;  
+    border-left-color: transparent;  
+    border-right-color: transparent;
+}
+
+
+.app {
+	flex-shrink: 0;
+	padding: 20px;
+	line-height: 40px;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #4d4d4d;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #4d4d4d;
+	text-decoration: none;
+	color:#fff;
+	font-size:14px;
+}
+.app:hover {
+	color: #ffc81f;
+}
+
+.search {
+	flex-shrink: 0;
+	padding: 20px;
+	line-height: 40px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #4d4d4d;
+}
+.search > img{
+	position: relative;
+	top: 6px;
+}
+
+.ribbon {
+	flex-shrink: 0;
+	display: -webkit-flex;
+	padding: 20px;
+}
+.about-us {
+	line-height: 80px;
+	margin-right: 12px;
+	text-decoration: none;
+	color:#fff;
+	font-size: 14px;
+}
+.about-us:hover{
+	color: #ffc81f;
+}
+
+.icon-weibo {
+	line-height: 80px;
+	margin-right: 12px;
+	position: relative;
+	top: 5px;
+}
+
+.icon-wechat {
+	line-height: 80px;
+	position: relative;
+	top: 5px;
+}

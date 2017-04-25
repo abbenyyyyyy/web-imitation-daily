@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.App {
+  
+}
+
+.page-content {
+	margin: 0 auto;
+	width:1190px;
+	padding-top: 90px;
+	padding-right: 90px;
+	padding-bottom: 370px;
+	padding-left: 90px;
+	display: flex;
+	display: -webkit-flex;
+	flex-direction: column;
+}
+
+.packery-container {
+	display: flex;
+	display: -webkit-flex;
+	margin: 0 auto;
+}
+
+.packery-banner-container {
+	width: 755px;
+	height: 450px;
+}
+
+.packery-login-container {
+	width: 245px;
+	height: 280px;
+	margin-left: 10px;
+}
+.packery-login-bd {
+	position: absolute;
+	margin-left: 10px;
+	top: 100px;
+}
+.packery-login-avatar {
+	width: 64px;
+	height: 64px;
+	position: absolute;
+	margin-left: 10px;
+	top: 70px;
+	left: 73px;
+}
+
+.packery-login-ft {
+	display: flex;
+	display: -webkit-flex;
+	height: 65px;
+	flex-direction: column;
+}
+.packery-login-text {
+	width:100%;
+	height:30px;
+	line-height: 30px; 
+	background-color: #ffc81f;
+	color:#000;
+	text-decoration: none;
+	font-size:14px;
+	text-align: center;
+}
+.packery-login-ft > p{
+	margin: 8px 0 0 0;
+	font-size:14px;
+	color:#848484;
+	text-align: center;
+}
+
+.packery-dowload > img{
+	margin: 5px 0 0 0;
+}
