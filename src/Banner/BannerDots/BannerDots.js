@@ -1,9 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 export default class BannerDots extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleDotClick(i) {
     var option = i - this.props.nowLocal;
@@ -12,12 +9,12 @@ export default class BannerDots extends Component {
 
   render() {
     let dotNodes = [];
-    let { count, nowLocal } = this.props;
-    for(let i = 0; i < count; i++) {
+    let count  = this.props.count;
+    for (let i = 0; i < count; i++) {
       dotNodes[i] = (
         <span
           key={'dot' + i}
-          className={"banner-dot" + (i === this.props.nowLocal?" banner-dot-selected":"")}
+          className={"banner-dot" + (i === this.props.nowLocal ? " banner-dot-selected" : "")}
           onClick={this.handleDotClick.bind(this, i)}>
         </span>
       );

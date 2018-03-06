@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+
+import BannerArrowsIcon from './BannerArrowsIcon'
 
 export default class BannerArrows extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleArrowClick(option) {
     this.props.turn(option);
@@ -11,16 +10,16 @@ export default class BannerArrows extends Component {
 
   render() {
     return (
-      <div className="banner-arrows-wrap">
+      <div style={{ display: 'flex', visibility: this.props.arrowsVisibility }}>
         <span
-          className="banner-arrow banner-arrow-left"
+          className="banner-arrow banner-arrow-left" style={{ marginLeft: '20px' }}
           onClick={this.handleArrowClick.bind(this, -1)}>
-          &lt;
+          <BannerArrowsIcon orientation="left" />
         </span>
         <span
-          className="banner-arrow banner-arrow-right"
+          className="banner-arrow banner-arrow-right" style={{ marginRight: '20px' }}
           onClick={this.handleArrowClick.bind(this, 1)}>
-          &gt;
+          <BannerArrowsIcon orientation="right" />
         </span>
       </div>
     );
