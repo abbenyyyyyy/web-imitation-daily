@@ -19,11 +19,11 @@ export default class BannerItem extends Component {
       </div>;
     }
     return (
-      <a href='#banner-item' className="banner-item" style={{ width: width, backgroundImage: `url(${item.src})` }}>
+      <a href='#banner-item' className="banner-item" style={{ width: width, backgroundImage: `url(${item.imgUrl})` }}>
         <div>
           {bannerItemTitle}
           <p>
-            {item.classify}
+            {item.categoryName}
           </p>
         </div>
       </a>
