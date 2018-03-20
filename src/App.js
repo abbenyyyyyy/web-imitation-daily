@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import './App.css';
 
 import axios from 'axios';
 
 import Head from './Head/Head.js';
 import Banner from './Banner/Banner';
-import ArticlePreview from './ArticlePreview/ArticlePreview';
 
 export default class App extends Component {
 
   constructor(props) {
     super(props);
-    // axios.defaults.baseURL = '/api';
     this.state = {
       bannerData: [],
-      homepageData:[]
+      homepageData: []
     };
   }
 
@@ -28,28 +27,22 @@ export default class App extends Component {
     }
     axios.all([getBanner(), getHomepage()])
       .then(axios.spread((responseBanner, responseHomepage) => {
-        this.setState({ bannerData: responseBanner.data.data, homepageData:IMAGE_DATA.data.homepageData});
+        this.setState({ bannerData: responseBanner.data.data, homepageData: IMAGE_DATA.data.homepageData });
         // console.log(IMAGE_DATA.data.homepageData);
       }));
-
-    // axios.get("/homes/banner")
-    //   .then(response => {
-    //     // console.log(response.data.data);
-    //     // for(var i=0;i<response.data.data.length;i++){
-    //     //   response.data.data[i].imgUrl = require('./img/01.jpg');
-    //     // }
-    //     this.setState({ bannerData: response.data.data });
-    //   });
   }
 
   render() {
     let loginBackgroundImage = require('./img/missing_login_bg.png');
-    
+    let articlesNodes = this.state.homepageData.map((item) => {
+      console.log(item);
+      return null;
+    });
     return (
-      <div className="App">
+      <AppContainer >
         <Head />
-        <div className="page-content">
-          <div className="packery-container">
+        <PageContent >
+          <PackeryContainer >
             <Banner bannerWidth={755}
               bannerHeight={450}
               items={this.state.bannerData}
@@ -77,16 +70,46 @@ export default class App extends Component {
                 <img src={require('./img/download-banner-x640.png')} width="245" height="160" alt="" />
               </a>
             </div>
-          </div>
-              
-          <div>
-          {/* <ArticlePreview articlePreviewData={this.state.homepageData[0]}/> */}
-          </div>
-        </div>
-      </div>
+          </PackeryContainer>
+          <PackeryContainerArticles >
+            {/* if()<ArticlePreview articlePreviewData={this.state.homepageData[0]}/> */}
+          </PackeryContainerArticles>
+        </PageContent>
+      </AppContainer>
     );
   }
 }
+
+const AppContainer = styled.div`
+  height: 3800px;
+  background: #eee;
+  text-align: center;
+`;
+
+const PageContent = styled.div`
+  margin: 0 auto;
+  width: 1190px;
+  padding: 90px 90px 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const PackeryContainer = styled.div`
+  display: flex;
+  margin: 0 auto;
+`;
+
+const PackeryContainerArticles = styled.div`
+    width:1010px;//23寸
+    height:2520px;
+    background-color:#fff;
+    margin-top:5px;
+    display: flex;
+		align-items: center;
+		justify-content: center;
+`;
 
 const IMAGE_DATA = {
   "status": 200,

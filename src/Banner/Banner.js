@@ -50,8 +50,8 @@ export default class Banner extends Component {
   render() {
     let count = this.props.items.length;
 
-    let itemNodes = this.props.items.map((item, idx) => {
-      return <BannerItem item={item} count={count} key={'item' + idx} />;
+    let itemNodes = this.props.items.map((item) => {
+      return <BannerItem item={item} count={count} key={item.id} />;
     });
 
     let arrowsNode = <BannerArrows turn={this.turn.bind(this)} arrowsVisibility={this.state.arrowsVisibility}  />;

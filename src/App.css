@@ -10,6 +10,8 @@
   padding: 90px 90px 370px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+	justify-content: center;
 }
 
 .packery-container {
