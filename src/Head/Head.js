@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Transition } from 'react-transition-group';
+import styled from 'styled-components';
 
-import './Head.css';
-
-import HeadIcon from './headSvg/HeadIcon.js';
+import HeadIcon from './headSvg/HeadIcon';
 import HrefSvgView from './HrefSvgView';
 import ClassifySvgView from './ClassifySvgView';
 
@@ -42,9 +41,9 @@ export default class Head extends Component {
 
 	render() {
 		return (
-			<div className="App-header" >
-				<div className='page-header' style={Object.assign({}, styles.headHeightStyle, !this.state.disabled && styles.headHeightEnabledStyle)}>
-					<div className='section-left'>
+			<AppHeader >
+				<PageHeader style={Object.assign({}, styles.headHeightStyle, !this.state.disabled && styles.headHeightEnabledStyle)}>
+					<SectionLeft >
 						<a href="#logo"
 							style={Object.assign({}, styles.logoVertical, !this.state.disabled && {
 								flexDirection: 'row', width: '125px', height: '60px', marginTop: '0px', marginRight: '0px',
@@ -55,49 +54,49 @@ export default class Head extends Component {
 							<img style={{ width: '50px', height: '26px', backgroundColor: '#000', }} src={require('./headSvg/head-title.png')}
 								alt="head-text" />
 						</a>
-						<div className="items-main-cates-clearfix">
+						<ItemsMainCatesClearfix >
 							<HrefSvgView category='head_flask' text='好奇心研究所' headIconWidth={17} headIconHeight={22} headIconMarginRight={12} />
 							<HrefSvgView category='head_column' text='栏目中心' headIconWidth={22} headIconHeight={22} headIconMarginRight={7}
 								style={{ marginLeft: 40 }} />
-						</div>
-					</div>
+						</ItemsMainCatesClearfix>
+					</SectionLeft>
 					<hr style={Object.assign({}, styles.hrHeightStyle, !this.state.disabled && styles.hrHeightEnabledStyle)} />
 					<div style={{
 						display: 'flex', alignItems: 'center', lineHeight: '100%', height: '100%',
 						padding: '0 0 0 20px', borderBottom: '1px solid #000',
 					}}>
-						<ul className="item-cates">
-							<li className="item-cate" style={{ paddingLeft: '0px' }}>
+						<ItemCates >
+							<ItemCate style={{ paddingLeft: '0px' }}>
 								<a href="#long-article">长文章</a>
-							</li>
-							<li className="item-cate">
+							</ItemCate>
+							<ItemCate>
 								<a href="#10graphs">10 个图</a>
-							</li>
-							<li className="item-cate">
+							</ItemCate>
+							<ItemCate >
 								<a href="#top15">Top 15</a>
-							</li>
-							<li className="item-cate">
+							</ItemCate>
+							<ItemCate >
 								<a href="#business">商业</a>
-							</li>
-							<li className="item-cate">
+							</ItemCate>
+							<ItemCate >
 								<a href="#function">智能</a>
-							</li>
-							<li className="item-cate">
+							</ItemCate>
+							<ItemCate >
 								<a href="#desgin">设计</a>
-							</li>
-							<li className="item-cate" style={{ display: this.state.disabled ? 'inline-block' : 'none' }}>
+							</ItemCate>
+							<ItemCate style={{ display: this.state.disabled ? 'inline-block' : 'none' }}>
 								<a href="#fashion">时尚</a>
-							</li>
-							<li className="item-cate" style={{ display: this.state.disabled ? 'inline-block' : 'none' }}>
+							</ItemCate>
+							<ItemCate style={{ display: this.state.disabled ? 'inline-block' : 'none' }}>
 								<a href="#entertainment">娱乐</a>
-							</li>
-							<li className="item-cate" style={{ display: this.state.disabled ? 'inline-block' : 'none' }}>
+							</ItemCate>
+							<ItemCate style={{ display: this.state.disabled ? 'inline-block' : 'none' }}>
 								<a href="#city">城市</a>
-							</li>
-							<li className="item-cate" style={{ display: this.state.disabled ? 'inline-block' : 'none' }}>
+							</ItemCate>
+							<ItemCate style={{ display: this.state.disabled ? 'inline-block' : 'none' }}>
 								<a href="#game">游戏</a>
-							</li>
-						</ul>
+							</ItemCate>
+						</ItemCates>
 						<div style={{
 							display: 'flex', whiteSpace: 'nowrap',
 							zIndex: '66', backgroundColor: '#000', listStyleType: 'none', padding: '0 20px',
@@ -111,13 +110,13 @@ export default class Head extends Component {
 						width: this.state.disabled ? '350px' : '520px',
 					}} >
 						<hr style={Object.assign({}, styles.hrHeightStyle, !this.state.disabled && styles.hrHeightEnabledStyle)} />
-						<a className="app" href="#download">APP</a>
+						<GoDownloadApp href="#download">APP</GoDownloadApp>
 						<hr style={Object.assign({}, styles.hrHeightStyle, !this.state.disabled && styles.hrHeightEnabledStyle)} />
-						<a className="search" href="#search" >
+						<GoSearch href="#search" >
 							<HeadIcon category='head_search' style={{ width: 19, height: 23, fill: '#fff' }} />
-						</a>
+						</GoSearch>
 						<hr style={Object.assign({}, styles.hrHeightStyle, !this.state.disabled && styles.hrHeightEnabledStyle)} />
-						<div className="user" style={{
+						<HeadUser style={{
 							width: this.state.disabled ? '0px' : '200px',
 							visibility: this.state.disabled ? "hidden" : "visible"
 						}}>
@@ -126,16 +125,16 @@ export default class Head extends Component {
 							</a>
 							<a href="#login">登录</a>
 							<a href="#signout" style={{ visibility: 'hidden' }}>退出</a>
-						</div>
-						<a className="about-us" href="#aboutUs" >关于我们</a>
-						<a className="icon-weibo" href="#weibo" >
+						</HeadUser>
+						<HeadAboutUs href="#aboutUs" >关于我们</HeadAboutUs>
+						<IconWeibo href="#weibo" >
 							<HeadIcon category='head_weibo' style={{ width: 20, height: 20, fill: '#fff' }} />
-						</a>
-						<a className="icon-wechat" href="#wechat" >
+						</IconWeibo>
+						<IconWechat href="#wechat" >
 							<HeadIcon category='head_wechat' style={{ width: 20, height: 20, fill: '#fff' }} />
-						</a>
+						</IconWechat>
 					</div>
-				</div>
+				</PageHeader>
 				<div style={{
 					display: "flex", flexDirection: "column", width: "100%", height: this.state.moreShow ? "85px" : "0px",
 					justifyContent: "space-around", alignItems: "center",
@@ -176,7 +175,7 @@ export default class Head extends Component {
 						</li>
 					</ul>
 				</div>
-			</div>
+			</AppHeader>
 		);
 	}
 }
@@ -193,6 +192,127 @@ const Triangle = ({ in: inProp }) => (
 		)}
 	</Transition>
 );
+
+const AppHeader = styled.div`
+	width: 100%;
+	position: fixed;
+	z-index: 999;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #000;
+	hr {
+		color: #4d4d4d;
+		border-left-style: solid;
+		border-top-style: none;
+		border-right-style: none;
+		border-bottom-style: none;
+	}
+`;
+
+const PageHeader = styled.div`
+	min-width: 1190px;
+  	max-width: 1400px;
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	z-index: 1;
+`;
+
+const SectionLeft = styled.div`
+	display: flex;
+  	position: relative;
+  	justify-content: center;
+  	align-items: center;
+  	width: 425px;
+  	min-width: 425px;
+`;
+
+const ItemsMainCatesClearfix = styled.div`
+	display: flex;
+  	align-items: center;
+  	text-align: center;
+  	line-height: 40px;
+`;
+
+const ItemCates = styled.ul`
+	display: flex;
+  	align-items: center;
+  	line-height: 100%;
+  	height: 100%;
+`;
+
+const ItemCate = styled.li`
+	list-style-type: none;
+  	padding-left: 20px;
+	float: left;
+	a {
+  		text-decoration: none;
+  		color: #818181;
+  		font-size: 14px;
+  		white-space: nowrap;
+	};
+	a:hover {
+		color: #ffc81f;
+	}
+`;
+
+const GoDownloadApp = styled.a`
+	flex-shrink: 0;
+  	padding: 20px;
+  	line-height: 40px;
+  	text-decoration: none;
+  	color: #fff;
+	  font-size: 14px;
+	 &:hover {
+  		color: #ffc81f;
+	} 
+`;
+
+const GoSearch = styled.a`
+	display: flex;
+  	align-items: center;
+  	line-height: 40px;
+  	padding: 20px;
+`;
+
+const HeadUser = styled.div`
+	display: flex;
+  	align-items: center;
+	justify-content: flex-start;
+	a {
+  		padding: 14px;
+  		text-decoration: none;
+  		color: #fff;
+  		font-size: 14px;
+	};
+	a:hover {
+  		color: #ffc81f;
+	}
+`;
+
+const HeadAboutUs = styled.a`
+	padding-left: 20px;
+  	margin-right: 12px;
+  	text-decoration: none;
+  	color: #fff;
+  	font-size: 14px;
+  	&:hover{
+		color: #ffc81f;
+  	}
+`;
+
+const IconWeibo = styled.a`
+	margin-right: 12px;
+  	position: relative;
+  	top: 5px;
+`;
+
+const IconWechat = styled.a`
+	position: relative;
+  	top: 5px;
+`;
 
 const styles = {
 	headHeightStyle: {

@@ -15,7 +15,6 @@ ClassifyIcon.defaultProps = {
 }
 
 export default function ClassifyIcon(props) {
-    // console.log(props.classify);
     switch (props.classify) {
         case '长文章':
             return (

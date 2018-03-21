@@ -29,7 +29,7 @@ export default class Banner extends Component {
 
   // 开始自动轮播
   goPlay() {
-    this.setState({arrowsVisibility: 'hidden'});
+    this.setState({ arrowsVisibility: 'hidden' });
     if (this.props.autoplay) {
       this.autoPlayFlag = setInterval(() => {
         this.turn(1);
@@ -39,7 +39,7 @@ export default class Banner extends Component {
 
   // 暂停自动轮播
   pausePlay() {
-    this.setState({arrowsVisibility: 'visible'});
+    this.setState({ arrowsVisibility: 'visible' });
     clearInterval(this.autoPlayFlag);
   }
 
@@ -50,11 +50,11 @@ export default class Banner extends Component {
   render() {
     let count = this.props.items.length;
 
-    let itemNodes = this.props.items.map((item, idx) => {
-      return <BannerItem item={item} count={count} key={'item' + idx} />;
+    let itemNodes = this.props.items.map((item) => {
+      return <BannerItem item={item} count={count} key={item.id} />;
     });
 
-    let arrowsNode = <BannerArrows turn={this.turn.bind(this)} arrowsVisibility={this.state.arrowsVisibility}  />;
+    let arrowsNode = <BannerArrows turn={this.turn.bind(this)} arrowsVisibility={this.state.arrowsVisibility} />;
 
     let dotsNode = <BannerDots turn={this.turn.bind(this)} count={count} nowLocal={this.state.nowLocal} />;
 
