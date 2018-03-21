@@ -5,8 +5,7 @@ import styled from 'styled-components';
 import ClassifyIcon from '../img/ClassifyIcon';
 import ArticlePreviewIcon from './ArticlePreviewIcon';
 
-export default class ArticlePreviewColumnOne extends Component {
-
+export default class ArticlePreviewColumnTwo extends Component {
     render() {
         let nowDate = new Date();
         let date = new Date(this.props.articlePreviewData.createTime);
@@ -39,7 +38,7 @@ export default class ArticlePreviewColumnOne extends Component {
             </div>;
         }
         return (
-            <BaseA href={'http://www.qdaily.com/articles/'+this.props.articlePreviewData.id+'.html'} target="_blank" >
+            <BaseA href={'http://www.qdaily.com/articles/' + this.props.articlePreviewData.id + '.html'} target="_blank" >
                 <ImgPreviewContainer >
                     <ImgPreviewContainerImgBox>
                         <ImgPreviewContainerImg alt='' src={(this.props.articlePreviewData.imgUrl)} />
@@ -60,9 +59,10 @@ export default class ArticlePreviewColumnOne extends Component {
 }
 
 const BaseA = styled.a`
+position:relative;
     display: flex;
     flex-direction: column;
-    width: 245px;
+    width: 500px;
     height: 280px;
     background-color:#fff;
     text-decoration: none;
@@ -70,7 +70,7 @@ const BaseA = styled.a`
 `;
 
 const ImgPreviewContainer = styled.div`
-    width: 245px;
+    width: 500px;
     height: 185px;
 `;
 
@@ -79,7 +79,7 @@ const ImgPreviewContainerImgBox = ImgPreviewContainer.extend`
 `;
 
 const ImgPreviewContainerImg = styled.img`
-    width: 245px;
+    width: 500px;
     height: 185px;
     transition:0.6s ease-in-out;
     &:hover{
@@ -104,11 +104,13 @@ const ImgPreviewClassifyIconContainer = styled.div`
 const ImgPreviewTitle = styled.div`
     padding: 12px 10px 0;
     h3{
-        line-height: 22px;
-        color: #0f1419;
+        color: #fff;
+        background-color: #000;
         max-height: 44px;
         font-weight: 400;
-        font-size: 16px;
+        height: 25px;
+        font-size: 20px;
+        line-height: 25px;
         text-align: left;
         overflow:hidden;
         word-wrap:break-word;
@@ -124,12 +126,17 @@ const ImgPreviewInfoContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 10px;
+    /* margin: 10px 10px; */
+    width: 480px;
     color: #666;
     font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 10px 15px;
 `;
 
-ArticlePreviewColumnOne.propTypes = {
+ArticlePreviewColumnTwo.propTypes = {
     articlePreviewData: PropTypes.shape({
         title: PropTypes.string,
         categoryName: PropTypes.string,

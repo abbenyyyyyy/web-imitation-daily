@@ -5,7 +5,9 @@ import axios from 'axios';
 import Head from './Head/Head.js';
 import Banner from './Banner/Banner';
 import ArticlePreviewColumnOne from './ArticlePreview/ArticlePreviewColumnOne';
+import ArticlePreviewColumnTwo from './ArticlePreview/ArticlePreviewColumnTwo';
 import ArticlePreviewColumnZero from './ArticlePreview/ArticlePreviewColumnZero';
+import ArticlePreviewSpecial from './ArticlePreview/ArticlePreviewSpecial';
 
 export default class App extends Component {
 
@@ -35,8 +37,12 @@ export default class App extends Component {
 		let loginBackgroundImage = require('./img/missing_login_bg.png');
 		let articlesNodes = this.state.homepageData.map((item) => {
 			switch (item.cssColumn) {
+				case -1:
+					return <ArticlePreviewSpecial articlePreviewData={item} key={item.id} />;
 				case 0:
-					return <ArticlePreviewColumnZero articlePreviewData={item} key={item.id} />
+					return <ArticlePreviewColumnZero articlePreviewData={item} key={item.id} />;
+					case 2:
+					return <ArticlePreviewColumnTwo articlePreviewData={item} key={item.id} />;
 				default:
 					return <ArticlePreviewColumnOne articlePreviewData={item} key={item.id} />;
 			}
@@ -234,38 +240,38 @@ const IMAGE_DATA = {
 			  "appview": "http://app3.qdaily.com/app3/articles/2224.html",
 			  "categoryName": "投票"
 			},
-			// {
-			//   "id": 56,
-			//   "title": "房子和我们的生活",
-			//   "description": "我们从个人生活中关注度最高的“房子”入手，开始记录微观历史。",
-			//   "imgUrl": "https://imitation-daily-img-1252489855.cos.ap-guangzhou.myqcloud.com/column56.png",
-			//   "cssColumn": -1,
-			//   "appview": "http://www.qdaily.com/special_columns/56.html"
-			// },
-			// {
-			// 	"id": 51103,
-			// 	"title": "2 万名科学家签署“给人类的第二次警告”，但可能没什么用",
-			// 	"description": "第一次警告发布于 25 年前，截止目前，上面的大多数问题都没有进展",
-			// 	"praiseCount": 17,
-			// 	"commentCount": 11,
-			// 	"createTime": "2018-03-15 07:02:07",
-			// 	"imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51103.jpg",
-			// 	"cssColumn": 1,
-			// 	"appview": "http://app3.qdaily.com/app3/articles/51103.html",
-			// 	"categoryName": "城市"
-			// },
-			// {
-			//   "id": 51119,
-			//   "title": "创造力说不定还真是天生的，它与大脑的关系被拍下来了",
-			//   "description": "不过这也并不代表后天的努力就是徒劳的",
-			//   "praiseCount": 16,
-			//   "commentCount": 0,
-			//   "createTime": "2018-03-15 06:59:09",
-			//   "imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51119.jpg",
-			//   "cssColumn": 1,
-			//   "appview": "http://app3.qdaily.com/app3/articles/51119.html",
-			//   "categoryName": "智能"
-			// },
+			{
+			  "id": 56,
+			  "title": "房子和我们的生活",
+			  "description": "我们从个人生活中关注度最高的“房子”入手，开始记录微观历史。",
+			  "imgUrl": "https://imitation-daily-img-1252489855.cos.ap-guangzhou.myqcloud.com/column56.png",
+			  "cssColumn": -1,
+			  "appview": "http://www.qdaily.com/special_columns/56.html"
+			},
+			{
+				"id": 51103,
+				"title": "2 万名科学家签署“给人类的第二次警告”，但可能没什么用",
+				"description": "第一次警告发布于 25 年前，截止目前，上面的大多数问题都没有进展",
+				"praiseCount": 17,
+				"commentCount": 11,
+				"createTime": "2018-03-15 07:02:07",
+				"imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51103.jpg",
+				"cssColumn": 1,
+				"appview": "http://app3.qdaily.com/app3/articles/51103.html",
+				"categoryName": "城市"
+			},
+			{
+			  "id": 51119,
+			  "title": "创造力说不定还真是天生的，它与大脑的关系被拍下来了",
+			  "description": "不过这也并不代表后天的努力就是徒劳的",
+			  "praiseCount": 16,
+			  "commentCount": 0,
+			  "createTime": "2018-03-15 06:59:09",
+			  "imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51119.jpg",
+			  "cssColumn": 1,
+			  "appview": "http://app3.qdaily.com/app3/articles/51119.html",
+			  "categoryName": "智能"
+			},
 			// {
 			//   "id": 51104,
 			//   "title": "雀巢日本要把 Kitkat 引入中国，这是它第四次“回归”",
@@ -410,18 +416,18 @@ const IMAGE_DATA = {
 			//   "appview": "http://app3.qdaily.com/app3/articles/51087.html",
 			//   "categoryName": "城市"
 			// },
-			// {
-			//   "id": 51099,
-			//   "title": "霍金去世，他的思想在宇宙中回荡",
-			//   "description": "将自己最好的时光花在探寻黑洞和宇宙源起，霍金并不惧怕黑暗。",
-			//   "praiseCount": 730,
-			//   "commentCount": 76,
-			//   "createTime": "2018-03-14 08:31:46",
-			//   "imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51099.jpg",
-			//   "cssColumn": 2,
-			//   "appview": "http://app3.qdaily.com/app3/articles/51099.html",
-			//   "categoryName": "智能"
-			// },
+			{
+			  "id": 51099,
+			  "title": "霍金去世，他的思想在宇宙中回荡",
+			  "description": "将自己最好的时光花在探寻黑洞和宇宙源起，霍金并不惧怕黑暗。",
+			  "praiseCount": 730,
+			  "commentCount": 76,
+			  "createTime": "2018-03-14 08:31:46",
+			  "imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51099.jpg",
+			  "cssColumn": 2,
+			  "appview": "http://app3.qdaily.com/app3/articles/51099.html",
+			  "categoryName": "智能"
+			},
 			// {
 			//   "id": 51078,
 			//   "title": "特朗普解除国务卿蒂勒森职务，提名中情局长接任",
