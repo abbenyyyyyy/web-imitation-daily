@@ -14,7 +14,7 @@ export default class App extends Component {
     // axios.defaults.baseURL = '/api';
     this.state = {
       bannerData: [],
-      homepageData:[]
+      homepageData: []
     };
   }
 
@@ -28,7 +28,7 @@ export default class App extends Component {
     }
     axios.all([getBanner(), getHomepage()])
       .then(axios.spread((responseBanner, responseHomepage) => {
-        this.setState({ bannerData: responseBanner.data.data, homepageData:IMAGE_DATA.data.homepageData});
+        this.setState({ bannerData: responseBanner.data.data, homepageData: IMAGE_DATA.data.homepageData });
         // console.log(IMAGE_DATA.data.homepageData);
       }));
 
@@ -44,7 +44,7 @@ export default class App extends Component {
 
   render() {
     let loginBackgroundImage = require('./img/missing_login_bg.png');
-    
+
     return (
       <div className="App">
         <Head />
@@ -78,9 +78,9 @@ export default class App extends Component {
               </a>
             </div>
           </div>
-              
+
           <div>
-          {/* <ArticlePreview articlePreviewData={this.state.homepageData[0]}/> */}
+            {/* <ArticlePreview articlePreviewData={this.state.homepageData[0]}/> */}
           </div>
         </div>
       </div>
