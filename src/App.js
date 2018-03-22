@@ -4,22 +4,35 @@ import axios from 'axios';
 
 import Head from './Head/Head.js';
 import Banner from './Banner/Banner';
-import ArticlePreviewColumnOne from './ArticlePreview/ArticlePreviewColumnOne';
-import ArticlePreviewColumnTwo from './ArticlePreview/ArticlePreviewColumnTwo';
+import ArticlePreviewColumnNormal from './ArticlePreview/ArticlePreviewColumnNormal';
 import ArticlePreviewColumnZero from './ArticlePreview/ArticlePreviewColumnZero';
 import ArticlePreviewSpecial from './ArticlePreview/ArticlePreviewSpecial';
+import Footer from './Footer/Footer';
 
 export default class App extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
+			headExtended: true,
 			bannerData: [],
-			homepageData: []
+			homepageData: [],
 		};
+		this._scroolHandler = this._scroolHandler.bind(this);
+	}
+
+	_scroolHandler() {
+		var scroolTop = document.body.scrollTop || document.documentElement.scrollTop;
+		console.log(scroolTop);
+		if (scroolTop >= 60) {
+			this.setState({ headExtended: false });
+		} else {
+			this.setState({ headExtended: true });
+		}
 	}
 
 	componentDidMount() {
+		window.addEventListener("scroll", this._scroolHandler);
 		function getBanner() {
 			return axios.get('/homes/banner');
 		}
@@ -33,6 +46,10 @@ export default class App extends Component {
 			}));
 	}
 
+	componentWillUnmount() {
+		window.removeEventListener("scroll", this._scroolHandler);
+	}
+
 	render() {
 		let loginBackgroundImage = require('./img/missing_login_bg.png');
 		let articlesNodes = this.state.homepageData.map((item) => {
@@ -41,15 +58,13 @@ export default class App extends Component {
 					return <ArticlePreviewSpecial articlePreviewData={item} key={item.id} />;
 				case 0:
 					return <ArticlePreviewColumnZero articlePreviewData={item} key={item.id} />;
-					case 2:
-					return <ArticlePreviewColumnTwo articlePreviewData={item} key={item.id} />;
 				default:
-					return <ArticlePreviewColumnOne articlePreviewData={item} key={item.id} />;
+					return <ArticlePreviewColumnNormal articlePreviewData={item} key={item.id} />;
 			}
 		});
 		return (
 			<AppContainer >
-				<Head />
+				<Head headExtended={this.state.headExtended}/>
 				<PageContent >
 					<PackeryContainer >
 						<Banner bannerWidth={755}
@@ -84,21 +99,26 @@ export default class App extends Component {
 						{articlesNodes}
 					</PackeryContainerArticles>
 				</PageContent>
+				<Footer/>
+				<TotopBd href="#totop">
+					<img src={require('./img/totop.png')} style={{width:'60px',height:'74px'}}/>
+				</TotopBd>
 			</AppContainer>
 		);
 	}
 }
 
-const AppContainer = styled.div`
-  height: 3800px;
+const AppContainer = styled.div` 
   background: #eee;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 `;
 
 const PageContent = styled.div`
   margin: 0 auto;
   width: 1190px;
-  padding: 90px 90px 370px;
+  padding: 90px 90px 770px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -173,6 +193,14 @@ const PackeryContainerArticles = styled.div`
 	align-content:space-between;
 `;
 
+const TotopBd = styled.a`
+	position: fixed;
+	bottom:40px;
+	right:40px;
+  	width: 60px;
+  	height:74px;
+`;
+
 const IMAGE_DATA = {
 	"status": 200,
 	"message": "OK",
@@ -229,49 +257,49 @@ const IMAGE_DATA = {
 				"categoryName": "智能"
 			},
 			{
-			  "id": 2224,
-			  "title": "你觉得，人们在处理日常冲突时都容易走上哪些歪路？",
-			  "description": "就没有“撕破脸”和“当包子”之外的解决问题方式么？（题图来自：视觉中国）",
-			  "praiseCount": 0,
-			  "commentCount": 4,
-			  "createTime": "2018-03-15 01:00:00",
-			  "imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/2224.jpg",
-			  "cssColumn": 0,
-			  "appview": "http://app3.qdaily.com/app3/articles/2224.html",
-			  "categoryName": "投票"
+				"id": 2224,
+				"title": "你觉得，人们在处理日常冲突时都容易走上哪些歪路？",
+				"description": "就没有“撕破脸”和“当包子”之外的解决问题方式么？（题图来自：视觉中国）",
+				"praiseCount": 0,
+				"commentCount": 4,
+				"createTime": "2018-03-15 01:00:00",
+				"imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/2224.jpg",
+				"cssColumn": 0,
+				"appview": "http://app3.qdaily.com/app3/articles/2224.html",
+				"categoryName": "投票"
 			},
 			{
-			  "id": 56,
-			  "title": "房子和我们的生活",
-			  "description": "我们从个人生活中关注度最高的“房子”入手，开始记录微观历史。",
-			  "imgUrl": "https://imitation-daily-img-1252489855.cos.ap-guangzhou.myqcloud.com/column56.png",
-			  "cssColumn": -1,
-			  "appview": "http://www.qdaily.com/special_columns/56.html"
+				"id": 56,
+				"title": "房子和我们的生活",
+				"description": "我们从个人生活中关注度最高的“房子”入手，开始记录微观历史。",
+				"imgUrl": "https://imitation-daily-img-1252489855.cos.ap-guangzhou.myqcloud.com/column56.png",
+				"cssColumn": -1,
+				"appview": "http://www.qdaily.com/special_columns/56.html"
 			},
-			{
-				"id": 51103,
-				"title": "2 万名科学家签署“给人类的第二次警告”，但可能没什么用",
-				"description": "第一次警告发布于 25 年前，截止目前，上面的大多数问题都没有进展",
-				"praiseCount": 17,
-				"commentCount": 11,
-				"createTime": "2018-03-15 07:02:07",
-				"imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51103.jpg",
-				"cssColumn": 1,
-				"appview": "http://app3.qdaily.com/app3/articles/51103.html",
-				"categoryName": "城市"
-			},
-			{
-			  "id": 51119,
-			  "title": "创造力说不定还真是天生的，它与大脑的关系被拍下来了",
-			  "description": "不过这也并不代表后天的努力就是徒劳的",
-			  "praiseCount": 16,
-			  "commentCount": 0,
-			  "createTime": "2018-03-15 06:59:09",
-			  "imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51119.jpg",
-			  "cssColumn": 1,
-			  "appview": "http://app3.qdaily.com/app3/articles/51119.html",
-			  "categoryName": "智能"
-			},
+			// {
+			// 	"id": 51103,
+			// 	"title": "2 万名科学家签署“给人类的第二次警告”，但可能没什么用",
+			// 	"description": "第一次警告发布于 25 年前，截止目前，上面的大多数问题都没有进展",
+			// 	"praiseCount": 17,
+			// 	"commentCount": 11,
+			// 	"createTime": "2018-03-15 07:02:07",
+			// 	"imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51103.jpg",
+			// 	"cssColumn": 1,
+			// 	"appview": "http://app3.qdaily.com/app3/articles/51103.html",
+			// 	"categoryName": "城市"
+			// },
+			// {
+			//   "id": 51119,
+			//   "title": "创造力说不定还真是天生的，它与大脑的关系被拍下来了",
+			//   "description": "不过这也并不代表后天的努力就是徒劳的",
+			//   "praiseCount": 16,
+			//   "commentCount": 0,
+			//   "createTime": "2018-03-15 06:59:09",
+			//   "imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51119.jpg",
+			//   "cssColumn": 1,
+			//   "appview": "http://app3.qdaily.com/app3/articles/51119.html",
+			//   "categoryName": "智能"
+			// },
 			// {
 			//   "id": 51104,
 			//   "title": "雀巢日本要把 Kitkat 引入中国，这是它第四次“回归”",
@@ -368,78 +396,90 @@ const IMAGE_DATA = {
 			//   "appview": "http://app3.qdaily.com/app3/articles/51092.html",
 			//   "categoryName": "智能"
 			// },
-			// {
-			//   "id": 51059,
-			//   "title": "这部话题黑暗喜剧，被视作是 2018 版的《逃出绝命镇》",
-			//   "description": "《抱歉打扰》在对现实的影射和讽刺上还要更宽广一些。",
-			//   "praiseCount": 38,
-			//   "commentCount": 4,
-			//   "createTime": "2018-03-14 13:18:55",
-			//   "imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51059.jpg",
-			//   "cssColumn": 1,
-			//   "appview": "http://app3.qdaily.com/app3/articles/51059.html",
-			//   "categoryName": "娱乐"
-			// },
-			// {
-			//   "id": 51094,
-			//   "title": "挪威最大的三文鱼生产商要来中国开店，三文鱼饺子要尝尝吗？",
-			//   "description": "健康的快餐？",
-			//   "praiseCount": 67,
-			//   "commentCount": 24,
-			//   "createTime": "2018-03-14 12:41:35",
-			//   "imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51094.jpg",
-			//   "cssColumn": 1,
-			//   "appview": "http://app3.qdaily.com/app3/articles/51094.html",
-			//   "categoryName": "商业"
-			// },
-			// {
-			//   "id": 51088,
-			//   "title": "今日娱乐：东京动画大奖公布，恐怖片《中邪》清明定档",
-			//   "description": "我们为你挑选了今天最重要的娱乐新闻。",
-			//   "praiseCount": 46,
-			//   "commentCount": 25,
-			//   "createTime": "2018-03-14 11:11:31",
-			//   "imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51088.jpg",
-			//   "cssColumn": 1,
-			//   "appview": "http://app3.qdaily.com/app3/articles/51088.html",
-			//   "categoryName": "娱乐"
-			// },
-			// {
-			//   "id": 51087,
-			//   "title": "看图：著名物理学家霍金去世，以及其他重要的事",
-			//   "description": "每天我们都会摘取重要的新闻图片。PS：我们认为这个世界的重要性不应该有绝对的等级，重点是看得更多，探索更多。",
-			//   "praiseCount": 76,
-			//   "commentCount": 24,
-			//   "createTime": "2018-03-14 09:45:12",
-			//   "imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51087.jpg",
-			//   "cssColumn": 1,
-			//   "appview": "http://app3.qdaily.com/app3/articles/51087.html",
-			//   "categoryName": "城市"
-			// },
 			{
-			  "id": 51099,
-			  "title": "霍金去世，他的思想在宇宙中回荡",
-			  "description": "将自己最好的时光花在探寻黑洞和宇宙源起，霍金并不惧怕黑暗。",
-			  "praiseCount": 730,
-			  "commentCount": 76,
-			  "createTime": "2018-03-14 08:31:46",
-			  "imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51099.jpg",
-			  "cssColumn": 2,
-			  "appview": "http://app3.qdaily.com/app3/articles/51099.html",
-			  "categoryName": "智能"
+				"id": 51099,
+				"title": "霍金去世，他的思想在宇宙中回荡",
+				"description": "将自己最好的时光花在探寻黑洞和宇宙源起，霍金并不惧怕黑暗。",
+				"praiseCount": 730,
+				"commentCount": 76,
+				"createTime": "2018-03-14 08:31:46",
+				"imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51099.jpg",
+				"cssColumn": 2,
+				"appview": "http://app3.qdaily.com/app3/articles/51099.html",
+				"categoryName": "智能"
+			},
+			{
+				"id": 51078,
+				"title": "特朗普解除国务卿蒂勒森职务，提名中情局长接任",
+				"description": "蒂勒森曾与特朗普在各种重要外交政策问题上一再发生冲突。",
+				"praiseCount": 67,
+				"commentCount": 25,
+				"createTime": "2018-03-14 08:11:11",
+				"imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51078.jpg",
+				"cssColumn": 2,
+				"appview": "http://app3.qdaily.com/app3/articles/51078.html",
+				"categoryName": "城市"
 			},
 			// {
-			//   "id": 51078,
-			//   "title": "特朗普解除国务卿蒂勒森职务，提名中情局长接任",
-			//   "description": "蒂勒森曾与特朗普在各种重要外交政策问题上一再发生冲突。",
-			//   "praiseCount": 67,
-			//   "commentCount": 25,
-			//   "createTime": "2018-03-14 08:11:11",
-			//   "imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51078.jpg",
-			//   "cssColumn": 2,
-			//   "appview": "http://app3.qdaily.com/app3/articles/51078.html",
-			//   "categoryName": "城市"
-			// }
+			// 	"id": 51014,
+			// 	"title": "3 月 8 日国际妇女节这一天，一个女权组织的微博账号消失了",
+			// 	"description": "该组织的微信公众号，以及不少与女权相关的账号也都消失了",
+			// 	"createTime": "2018-03-12 00:42:41",
+			// 	"imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51014.jpg",
+			// 	"commentCount": 101,
+			// 	"praiseCount": 144,
+			// 	"appview": "http://app3.qdaily.com/app3/articles/51014.html",
+			// 	"cssColumn": 2,
+			// 	"categoryName": "城市"
+			// },
+			{
+				"id": 51059,
+				"title": "这部话题黑暗喜剧，被视作是 2018 版的《逃出绝命镇》",
+				"description": "《抱歉打扰》在对现实的影射和讽刺上还要更宽广一些。",
+				"praiseCount": 38,
+				"commentCount": 4,
+				"createTime": "2018-03-14 13:18:55",
+				"imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51059.jpg",
+				"cssColumn": 1,
+				"appview": "http://app3.qdaily.com/app3/articles/51059.html",
+				"categoryName": "娱乐"
+			},
+			{
+				"id": 51094,
+				"title": "挪威最大的三文鱼生产商要来中国开店，三文鱼饺子要尝尝吗？",
+				"description": "健康的快餐？",
+				"praiseCount": 67,
+				"commentCount": 24,
+				"createTime": "2018-03-14 12:41:35",
+				"imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51094.jpg",
+				"cssColumn": 1,
+				"appview": "http://app3.qdaily.com/app3/articles/51094.html",
+				"categoryName": "商业"
+			},
+			// {
+			// 	"id": 51088,
+			// 	"title": "今日娱乐：东京动画大奖公布，恐怖片《中邪》清明定档",
+			// 	"description": "我们为你挑选了今天最重要的娱乐新闻。",
+			// 	"praiseCount": 46,
+			// 	"commentCount": 25,
+			// 	"createTime": "2018-03-14 11:11:31",
+			// 	"imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51088.jpg",
+			// 	"cssColumn": 1,
+			// 	"appview": "http://app3.qdaily.com/app3/articles/51088.html",
+			// 	"categoryName": "娱乐"
+			// },
+			// {
+			// 	"id": 51087,
+			// 	"title": "看图：著名物理学家霍金去世，以及其他重要的事",
+			// 	"description": "每天我们都会摘取重要的新闻图片。PS：我们认为这个世界的重要性不应该有绝对的等级，重点是看得更多，探索更多。",
+			// 	"praiseCount": 76,
+			// 	"commentCount": 24,
+			// 	"createTime": "2018-03-14 09:45:12",
+			// 	"imgUrl": "http://imitation-daily-img-1252489855.picgz.myqcloud.com/51087.jpg",
+			// 	"cssColumn": 1,
+			// 	"appview": "http://app3.qdaily.com/app3/articles/51087.html",
+			// 	"categoryName": "城市"
+			// },
 		]
 	}
 }

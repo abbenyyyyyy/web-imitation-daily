@@ -11,44 +11,25 @@ export default class Head extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			disabled: true,
 			moreShow: false,
 		}
-		this._scroolHandler = this._scroolHandler.bind(this);
 		this._moreClick = this._moreClick.bind(this);
-	}
-
-	_scroolHandler() {
-		var scroolTop = document.body.scrollTop || document.documentElement.scrollTop;
-		if (scroolTop >= 60) {
-			this.setState({ disabled: false });
-		} else {
-			this.setState({ disabled: true });
-		}
 	}
 
 	_moreClick() {
 		this.setState({ moreShow: !this.state.moreShow });
 	}
-
-	componentDidMount() {
-		window.addEventListener("scroll", this._scroolHandler);
-	}
-
-	componentWillUnmount() {
-		window.removeEventListener("scroll", this._scroolHandler);
-	}
-
+	
 	render() {
 		return (
 			<AppHeader >
-				<PageHeader style={Object.assign({}, styles.headHeightStyle, !this.state.disabled && styles.headHeightEnabledStyle)}>
+				<PageHeader style={Object.assign({}, styles.headHeightStyle, !this.props.headExtended && styles.headHeightEnabledStyle)}>
 					<SectionLeft >
 						<a href="#logo"
-							style={Object.assign({}, styles.logoVertical, !this.state.disabled && {
+							style={Object.assign({}, styles.logoVertical, !this.props.headExtended && {
 								flexDirection: 'row', width: '125px', height: '60px', marginTop: '0px', marginRight: '0px',
 							})} >
-							<img style={Object.assign({}, styles.logoPic, !this.state.disabled && styles.logoPicEnabled)}
+							<img style={Object.assign({}, styles.logoPic, !this.props.headExtended && styles.logoPicEnabled)}
 								src={require('./headSvg/head-q.png')}
 								alt="head-pic" />
 							<img style={{ width: '50px', height: '26px', backgroundColor: '#000', }} src={require('./headSvg/head-title.png')}
@@ -60,7 +41,7 @@ export default class Head extends Component {
 								style={{ marginLeft: 40 }} />
 						</ItemsMainCatesClearfix>
 					</SectionLeft>
-					<hr style={Object.assign({}, styles.hrHeightStyle, !this.state.disabled && styles.hrHeightEnabledStyle)} />
+					<hr style={Object.assign({}, styles.hrHeightStyle, !this.props.headExtended && styles.hrHeightEnabledStyle)} />
 					<div style={{
 						display: 'flex', alignItems: 'center', lineHeight: '100%', height: '100%',
 						padding: '0 0 0 20px', borderBottom: '1px solid #000',
@@ -84,16 +65,16 @@ export default class Head extends Component {
 							<ItemCate >
 								<a href="#desgin">设计</a>
 							</ItemCate>
-							<ItemCate style={{ display: this.state.disabled ? 'inline-block' : 'none' }}>
+							<ItemCate style={{ display: this.props.headExtended ? 'inline-block' : 'none' }}>
 								<a href="#fashion">时尚</a>
 							</ItemCate>
-							<ItemCate style={{ display: this.state.disabled ? 'inline-block' : 'none' }}>
+							<ItemCate style={{ display: this.props.headExtended ? 'inline-block' : 'none' }}>
 								<a href="#entertainment">娱乐</a>
 							</ItemCate>
-							<ItemCate style={{ display: this.state.disabled ? 'inline-block' : 'none' }}>
+							<ItemCate style={{ display: this.props.headExtended ? 'inline-block' : 'none' }}>
 								<a href="#city">城市</a>
 							</ItemCate>
-							<ItemCate style={{ display: this.state.disabled ? 'inline-block' : 'none' }}>
+							<ItemCate style={{ display: this.props.headExtended ? 'inline-block' : 'none' }}>
 								<a href="#game">游戏</a>
 							</ItemCate>
 						</ItemCates>
@@ -107,18 +88,18 @@ export default class Head extends Component {
 					</div>
 					<div style={{
 						flexShrink: '0', display: 'flex', alignItems: 'center', height: '100%',
-						width: this.state.disabled ? '350px' : '520px',
+						width: this.props.headExtended ? '350px' : '520px',
 					}} >
-						<hr style={Object.assign({}, styles.hrHeightStyle, !this.state.disabled && styles.hrHeightEnabledStyle)} />
+						<hr style={Object.assign({}, styles.hrHeightStyle, !this.props.headExtended && styles.hrHeightEnabledStyle)} />
 						<GoDownloadApp href="#download">APP</GoDownloadApp>
-						<hr style={Object.assign({}, styles.hrHeightStyle, !this.state.disabled && styles.hrHeightEnabledStyle)} />
+						<hr style={Object.assign({}, styles.hrHeightStyle, !this.props.headExtended && styles.hrHeightEnabledStyle)} />
 						<GoSearch href="#search" >
 							<HeadIcon category='head_search' style={{ width: 19, height: 23, fill: '#fff' }} />
 						</GoSearch>
-						<hr style={Object.assign({}, styles.hrHeightStyle, !this.state.disabled && styles.hrHeightEnabledStyle)} />
+						<hr style={Object.assign({}, styles.hrHeightStyle, !this.props.headExtended && styles.hrHeightEnabledStyle)} />
 						<HeadUser style={{
-							width: this.state.disabled ? '0px' : '200px',
-							visibility: this.state.disabled ? "hidden" : "visible"
+							width: this.props.headExtended ? '0px' : '200px',
+							visibility: this.props.headExtended ? "hidden" : "visible"
 						}}>
 							<a href="#info" style={{ display: 'inline-block', width: '32px', height: '32px', maxHeight: '32px', maxWidth: '32px', }}>
 								<img src={require('../img/missing_face.png')} style={{ width: '32px', height: '32px' }} alt="info" />

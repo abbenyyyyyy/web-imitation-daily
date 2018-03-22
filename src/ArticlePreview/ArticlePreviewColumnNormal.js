@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import ClassifyIcon from '../img/ClassifyIcon';
 import ArticlePreviewIcon from './ArticlePreviewIcon';
 
-export default class ArticlePreviewColumnOne extends Component {
+export default class ArticlePreviewColumnNormal extends Component {
 
     render() {
         let nowDate = new Date();
@@ -18,7 +18,7 @@ export default class ArticlePreviewColumnOne extends Component {
         } else {
             printTime = (date.getMonth() + 1) + "月" + date.getDate() + '日';
         }
-
+        //构建留言数目与点like人数显示元素
         let imgPreviewInfoContainerNumber = null;
         if (this.props.articlePreviewData.commentCount > 0 && this.props.articlePreviewData.praiseCount > 0) {
             imgPreviewInfoContainerNumber = <div>
@@ -38,19 +38,43 @@ export default class ArticlePreviewColumnOne extends Component {
                 <span style={{ paddingLeft: 5, }}>{this.props.articlePreviewData.praiseCount}</span>
             </div>;
         }
+        let imgRealUrlSuffix = this.props.articlePreviewData.cssColumn === 1 ? "/columnone245+185" : "/columntwo500+185";
+        //构建新闻标题显示元素
+        let previewTitleNode = null;
+        if (this.props.articlePreviewData.cssColumn === 1) {
+            previewTitleNode = <ImgPreviewTitle columnCount={this.props.articlePreviewData.cssColumn} >
+                <h3>{this.props.articlePreviewData.title}</h3>
+            </ImgPreviewTitle>;
+        } else {
+            if (this.props.articlePreviewData.title.length > 23) {
+                let title_first = this.props.articlePreviewData.title.substring(0, 23);
+                let title_second = this.props.articlePreviewData.title.substring(23);
+                previewTitleNode = <ImgPreviewTitle style={{paddingTop:"5px"}} columnCount={this.props.articlePreviewData.cssColumn} >
+                    <h3>
+                        <span style={{marginBottom:"5px"}}>{title_first}</span>
+                        <span>{title_second}</span>
+                    </h3>
+                </ImgPreviewTitle>;
+            } else {
+                previewTitleNode = <ImgPreviewTitle columnCount={this.props.articlePreviewData.cssColumn} >
+                    <h3><span>{this.props.articlePreviewData.title}</span></h3>
+                </ImgPreviewTitle>;
+            }
+        }
         return (
-            <BaseA href={'http://www.qdaily.com/articles/'+this.props.articlePreviewData.id+'.html'} target="_blank" >
-                <ImgPreviewContainer >
-                    <ImgPreviewContainerImgBox>
-                        <ImgPreviewContainerImg alt='' src={(this.props.articlePreviewData.imgUrl)} />
+            <BaseA columnCount={this.props.articlePreviewData.cssColumn} href={'http://www.qdaily.com/articles/' + this.props.articlePreviewData.id + '.html'} target="_blank" >
+                <ImgPreviewContainer columnCount={this.props.articlePreviewData.cssColumn} >
+                    <ImgPreviewContainerImgBox columnCount={this.props.articlePreviewData.cssColumn}>
+                        <ImgPreviewContainerImg alt='' columnCount={this.props.articlePreviewData.cssColumn}
+                            src={(this.props.articlePreviewData.imgUrl + imgRealUrlSuffix)} />
                     </ImgPreviewContainerImgBox>
                     <ImgPreviewClassifyIconContainer >
                         <ClassifyIcon classify={this.props.articlePreviewData.categoryName} width={22} height={22} />
                         <span>{this.props.articlePreviewData.categoryName}</span>
                     </ImgPreviewClassifyIconContainer>
                 </ImgPreviewContainer>
-                <ImgPreviewTitle ><h3>{this.props.articlePreviewData.title}</h3></ImgPreviewTitle>
-                <ImgPreviewInfoContainer >
+                {previewTitleNode}
+                <ImgPreviewInfoContainer columnCount={this.props.articlePreviewData.cssColumn} >
                     <span>{printTime}</span>
                     {imgPreviewInfoContainerNumber}
                 </ImgPreviewInfoContainer>
@@ -60,9 +84,10 @@ export default class ArticlePreviewColumnOne extends Component {
 }
 
 const BaseA = styled.a`
+    position:relative;
     display: flex;
     flex-direction: column;
-    width: 245px;
+    width: ${props => props.columnCount === 1 ? "245px" : "500px"};
     height: 280px;
     background-color:#fff;
     text-decoration: none;
@@ -70,7 +95,7 @@ const BaseA = styled.a`
 `;
 
 const ImgPreviewContainer = styled.div`
-    width: 245px;
+    width: ${props => props.columnCount === 1 ? "245px" : "500px"};
     height: 185px;
 `;
 
@@ -79,7 +104,7 @@ const ImgPreviewContainerImgBox = ImgPreviewContainer.extend`
 `;
 
 const ImgPreviewContainerImg = styled.img`
-    width: 245px;
+    width: ${props => props.columnCount === 1 ? "245px" : "500px"};
     height: 185px;
     transition:0.6s ease-in-out;
     &:hover{
@@ -104,11 +129,9 @@ const ImgPreviewClassifyIconContainer = styled.div`
 const ImgPreviewTitle = styled.div`
     padding: 12px 10px 0;
     h3{
-        line-height: 22px;
-        color: #0f1419;
-        max-height: 44px;
         font-weight: 400;
-        font-size: 16px;
+        /* max-height: 44px; */
+        color: #0f1419;
         text-align: left;
         overflow:hidden;
         word-wrap:break-word;
@@ -117,6 +140,16 @@ const ImgPreviewTitle = styled.div`
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
+        line-height: ${props => props.columnCount === 1 ? "22px" : "25px"};
+        /* height: ${props => props.columnCount === 1 ? "100%" : "25px"}; */
+        /* height:100%; */
+        font-size: ${props => props.columnCount === 1 ? "16px" : "20px"};
+        span{
+            display: inline-block;
+            color: #fff;
+            background-color: #000;
+            padding: 0 10px;
+        }
     }
 `;
 
@@ -124,12 +157,16 @@ const ImgPreviewInfoContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 10px;
+    width: ${props => props.columnCount === 1 ? "225px" : "480px"};
     color: #666;
     font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 10px 15px;
 `;
 
-ArticlePreviewColumnOne.propTypes = {
+ArticlePreviewColumnNormal.propTypes = {
     articlePreviewData: PropTypes.shape({
         title: PropTypes.string,
         categoryName: PropTypes.string,
