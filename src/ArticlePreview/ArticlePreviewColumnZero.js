@@ -11,7 +11,7 @@ export default class ArticlePreviewColumnZero extends Component {
             'http://www.qdaily.com/papers/' + this.props.articlePreviewData.id + '.html' :
             'http://www.qdaily.com/mobs/' + this.props.articlePreviewData.id + '.html';
         return (
-            <BaseA href={hrefUrl} target="_blank">
+            <BaseA href={hrefUrl} target="_blank" rel="noopener noreferrer">
                 <ImgPreviewContainer >
                     <ImgPreviewContainerImgBox>
                         <ImgPreviewContainerImg alt='' src={(this.props.articlePreviewData.imgUrl)} />

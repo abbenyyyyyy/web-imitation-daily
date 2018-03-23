@@ -62,7 +62,8 @@ export default class ArticlePreviewColumnNormal extends Component {
             }
         }
         return (
-            <BaseA columnCount={this.props.articlePreviewData.cssColumn} href={'http://www.qdaily.com/articles/' + this.props.articlePreviewData.id + '.html'} target="_blank" >
+            <BaseA columnCount={this.props.articlePreviewData.cssColumn} href={'http://www.qdaily.com/articles/' + this.props.articlePreviewData.id + '.html'} 
+            target="_blank" rel="noopener noreferrer" >
                 <ImgPreviewContainer columnCount={this.props.articlePreviewData.cssColumn} >
                     <ImgPreviewContainerImgBox columnCount={this.props.articlePreviewData.cssColumn}>
                         <ImgPreviewContainerImg alt='' columnCount={this.props.articlePreviewData.cssColumn}

@@ -15,6 +15,7 @@ export default class App extends Component {
 		super(props);
 		this.state = {
 			headExtended: true,
+			showToTop: false,
 			bannerData: [],
 			homepageData: [],
 		};
@@ -25,9 +26,24 @@ export default class App extends Component {
 		var scroolTop = document.body.scrollTop || document.documentElement.scrollTop;
 		console.log(scroolTop);
 		if (scroolTop >= 60) {
-			this.setState({ headExtended: false });
+			if (this.state.headExtended) {
+				this.setState({ headExtended: false });
+			}
 		} else {
-			this.setState({ headExtended: true });
+			if (!this.state.headExtended) {
+				this.setState({ headExtended: true });
+			}
+		}
+		if (scroolTop < 920) {
+			//隐藏toTop
+			if (this.state.showToTop) {
+				this.setState({ showToTop: false });
+			}
+		} else {
+			//显示toTop
+			if (!this.state.showToTop) {
+				this.setState({ showToTop: true });
+			}
 		}
 	}
 
@@ -64,7 +80,7 @@ export default class App extends Component {
 		});
 		return (
 			<AppContainer >
-				<Head headExtended={this.state.headExtended}/>
+				<Head headExtended={this.state.headExtended} />
 				<PageContent >
 					<PackeryContainer >
 						<Banner bannerWidth={755}
@@ -99,9 +115,9 @@ export default class App extends Component {
 						{articlesNodes}
 					</PackeryContainerArticles>
 				</PageContent>
-				<Footer/>
-				<TotopBd href="#totop">
-					<img src={require('./img/totop.png')} style={{width:'60px',height:'74px'}}/>
+				<Footer />
+				<TotopBd href="#totop" style={{ visibility: this.state.showToTop ? "visible" : "hidden", }}>
+					<img src={require('./img/totop.png')} style={{ width: '60px', height: '74px', visibility: this.state.showToTop ? "visible" : "hidden", }} alt="totop" />
 				</TotopBd>
 			</AppContainer>
 		);

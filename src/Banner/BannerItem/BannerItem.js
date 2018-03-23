@@ -19,7 +19,8 @@ export default class BannerItem extends Component {
       </div>;
     }
     return (
-      <a href={'http://www.qdaily.com/articles/'+item.id+'.html'} target="_blank" className="banner-item" style={{ width: width, backgroundImage: `url(${item.imgUrl})` }}>
+      <a href={'http://www.qdaily.com/articles/'+item.id+'.html'} target="_blank" rel="noopener noreferrer"
+      className="banner-item" style={{ width: width, backgroundImage: `url(${item.imgUrl})` }}>
         <div>
           {bannerItemTitle}
           <p>

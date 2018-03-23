@@ -6,7 +6,8 @@ import styled from 'styled-components';
 export default class ArticlePreviewSpecial extends Component {
     render() {
         return (
-            <BaseA href={"http://www.qdaily.com/special_columns/" + this.props.articlePreviewData.id + ".html"} target="_blank" >
+            <BaseA href={"http://www.qdaily.com/special_columns/" + this.props.articlePreviewData.id + ".html"}
+                target="_blank" rel="noopener noreferrer">
                 <img alt='' src={(this.props.articlePreviewData.imgUrl)} style={{ width: "330px", height: "320px", }} />
             </BaseA>
         )
