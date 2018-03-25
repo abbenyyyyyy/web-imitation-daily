@@ -21,19 +21,19 @@ export default class ArticlePreviewColumnNormal extends Component {
         //构建留言数目与点like人数显示元素
         let imgPreviewInfoContainerNumber = null;
         if (this.props.articlePreviewData.commentCount > 0 && this.props.articlePreviewData.praiseCount > 0) {
-            imgPreviewInfoContainerNumber = <div>
+            imgPreviewInfoContainerNumber = <div style={{ color: "#d1d1d1" }}>
                 <ArticlePreviewIcon category='message' width={10} height={10} />
                 <span style={{ paddingLeft: 5, paddingRight: 10, }}>{this.props.articlePreviewData.commentCount}</span>
                 <ArticlePreviewIcon category='like' width={10} height={10} />
                 <span style={{ paddingLeft: 5, }}>{this.props.articlePreviewData.praiseCount}</span>
             </div>;
         } else if (this.props.articlePreviewData.commentCount > 0) {
-            imgPreviewInfoContainerNumber = <div>
+            imgPreviewInfoContainerNumber = <div style={{ color: "#d1d1d1" }}>
                 <ArticlePreviewIcon category='message' width={10} height={10} />
                 <span style={{ paddingLeft: 5, }}>{this.props.articlePreviewData.commentCount}</span>
             </div>;
         } else if (this.props.articlePreviewData.praiseCount > 0) {
-            imgPreviewInfoContainerNumber = <div>
+            imgPreviewInfoContainerNumber = <div style={{ color: "#d1d1d1" }}>
                 <ArticlePreviewIcon category='like' width={10} height={10} />
                 <span style={{ paddingLeft: 5, }}>{this.props.articlePreviewData.praiseCount}</span>
             </div>;
@@ -49,9 +49,9 @@ export default class ArticlePreviewColumnNormal extends Component {
             if (this.props.articlePreviewData.title.length > 23) {
                 let title_first = this.props.articlePreviewData.title.substring(0, 23);
                 let title_second = this.props.articlePreviewData.title.substring(23);
-                previewTitleNode = <ImgPreviewTitle style={{paddingTop:"5px"}} columnCount={this.props.articlePreviewData.cssColumn} >
+                previewTitleNode = <ImgPreviewTitle style={{ paddingTop: "5px" }} columnCount={this.props.articlePreviewData.cssColumn} >
                     <h3>
-                        <span style={{marginBottom:"5px"}}>{title_first}</span>
+                        <span style={{ marginBottom: "5px" }}>{title_first}</span>
                         <span>{title_second}</span>
                     </h3>
                 </ImgPreviewTitle>;
@@ -62,8 +62,8 @@ export default class ArticlePreviewColumnNormal extends Component {
             }
         }
         return (
-            <BaseA columnCount={this.props.articlePreviewData.cssColumn} href={'http://www.qdaily.com/articles/' + this.props.articlePreviewData.id + '.html'} 
-            target="_blank" rel="noopener noreferrer" >
+            <BaseA columnCount={this.props.articlePreviewData.cssColumn} href={'http://www.qdaily.com/articles/' + this.props.articlePreviewData.id + '.html'}
+                target="_blank" rel="noopener noreferrer" >
                 <ImgPreviewContainer columnCount={this.props.articlePreviewData.cssColumn} >
                     <ImgPreviewContainerImgBox columnCount={this.props.articlePreviewData.cssColumn}>
                         <ImgPreviewContainerImg alt='' columnCount={this.props.articlePreviewData.cssColumn}

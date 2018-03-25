@@ -8,6 +8,7 @@ import ArticlePreviewColumnNormal from './ArticlePreview/ArticlePreviewColumnNor
 import ArticlePreviewColumnZero from './ArticlePreview/ArticlePreviewColumnZero';
 import ArticlePreviewSpecial from './ArticlePreview/ArticlePreviewSpecial';
 import Footer from './Footer/Footer';
+import Loading from './loading/Loading';
 
 export default class App extends Component {
 
@@ -16,16 +17,18 @@ export default class App extends Component {
 		this.state = {
 			headExtended: true,
 			showToTop: false,
+			toTopscrooling: false,
+			showLoading: false,
 			bannerData: [],
 			homepageData: [],
 		};
 		this._scroolHandler = this._scroolHandler.bind(this);
+		this._onToTopClick = this._onToTopClick.bind(this);
 	}
 
 	_scroolHandler() {
-		var scroolTop = document.body.scrollTop || document.documentElement.scrollTop;
-		console.log(scroolTop);
-		if (scroolTop >= 60) {
+		let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+		if (scrollTop >= 60) {
 			if (this.state.headExtended) {
 				this.setState({ headExtended: false });
 			}
@@ -34,17 +37,41 @@ export default class App extends Component {
 				this.setState({ headExtended: true });
 			}
 		}
-		if (scroolTop < 920) {
+		if (scrollTop < 920) {
 			//隐藏toTop
 			if (this.state.showToTop) {
 				this.setState({ showToTop: false });
 			}
 		} else {
+			let loadMoreNodeBottom = this.loadMoreNode.getBoundingClientRect().bottom;
+			let windowHeight = document.documentElement.clientHeight;//屏幕高度：
+			// console.log( "  " + loadMoreNodeBottom + "  屏幕高度：" + windowHeight);
+			if (loadMoreNodeBottom < windowHeight) {
+				console.log("滚动到底部,开始加载下一页:" + loadMoreNodeBottom + "  屏幕高度：" + windowHeight);
+			}
 			//显示toTop
 			if (!this.state.showToTop) {
-				this.setState({ showToTop: true });
+				if (!this.state.toTopscrooling) {
+					this.setState({ showToTop: true });
+				}
 			}
 		}
+	}
+
+	_onToTopClick() {
+		this.setState({ toTopscrooling: true, showToTop: false });
+		var timer = setInterval(() => {
+			var currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
+			currentPosition -= 20;
+			if (currentPosition > 0) {
+				window.scrollTo(0, currentPosition);
+			} else {
+				window.scrollTo(0, 0);
+				clearInterval(timer);
+				timer = null;
+				this.setState({ toTopscrooling: false });
+			}
+		}, 1);
 	}
 
 	componentDidMount() {
@@ -58,7 +85,9 @@ export default class App extends Component {
 		}
 		axios.all([getBanner(), getHomepage()])
 			.then(axios.spread((responseBanner, responseHomepage) => {
-				this.setState({ bannerData: responseBanner.data.data, homepageData: IMAGE_DATA.data.homepageData });
+				// console.log(responseHomepage.data.data)
+				// this.setState({ bannerData: responseBanner.data.data, homepageData: IMAGE_DATA.data.homepageData });
+				this.setState({ bannerData: responseBanner.data.data, homepageData: responseHomepage.data.data.homepageData });
 			}));
 	}
 
@@ -78,6 +107,11 @@ export default class App extends Component {
 					return <ArticlePreviewColumnNormal articlePreviewData={item} key={item.id} />;
 			}
 		});
+		let loadMore = <div style={{ height: "100px", width: "100%", textAlign: "center", lineHeight: "100px", }}
+			ref={node => this.loadMoreNode = node}>
+			<ShowMoreButton href="#loadmore">加载更多</ShowMoreButton>
+			<Loading type="bubbles" color="#ffc81f" />
+		</div>
 		return (
 			<AppContainer >
 				<Head headExtended={this.state.headExtended} />
@@ -113,10 +147,11 @@ export default class App extends Component {
 					</PackeryContainer>
 					<PackeryContainerArticles >
 						{articlesNodes}
+						{loadMore}
 					</PackeryContainerArticles>
 				</PageContent>
 				<Footer />
-				<TotopBd href="#totop" style={{ visibility: this.state.showToTop ? "visible" : "hidden", }}>
+				<TotopBd href="#totop" style={{ visibility: this.state.showToTop ? "visible" : "hidden", }} onClick={this._onToTopClick}>
 					<img src={require('./img/totop.png')} style={{ width: '60px', height: '74px', visibility: this.state.showToTop ? "visible" : "hidden", }} alt="totop" />
 				</TotopBd>
 			</AppContainer>
@@ -134,7 +169,7 @@ const AppContainer = styled.div`
 const PageContent = styled.div`
   margin: 0 auto;
   width: 1190px;
-  padding: 90px 90px 770px;
+  padding: 90px 90px 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -207,6 +242,15 @@ const PackeryContainerArticles = styled.div`
 	justify-content:space-between;
 	flex-wrap:wrap;
 	align-content:space-between;
+`;
+
+const ShowMoreButton = styled.a`
+	text-decoration:none;
+	background-color: #ffc81f;
+	padding: 15px 50px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 18px;
 `;
 
 const TotopBd = styled.a`

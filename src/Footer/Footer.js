@@ -147,7 +147,7 @@ export default class Footer extends Component {
                             <CopyrightInfoText>2014 北京酷睿奥思科技发展有限公司</CopyrightInfoText>
                             <div style={{ display: "flex" }}>
                                 <CopyrightInfoText>京ICP备14027177号-1</CopyrightInfoText>
-                                <img src="http://www.beian.gov.cn/file/ghs.png" style={{ width: "16px", height: "16px", marginLeft: "10px" }} />
+                                <img src="http://www.beian.gov.cn/file/ghs.png" style={{ width: "16px", height: "16px", marginLeft: "10px" }} alt="gov"/>
                                 <CopyrightInfoText style={{ marginLeft: "5px" }}>京公网安备 11010502030071号</CopyrightInfoText>
                             </div>
                         </CopyrightInfo>
