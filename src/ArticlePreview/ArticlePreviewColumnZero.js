@@ -11,10 +11,10 @@ export default class ArticlePreviewColumnZero extends Component {
             'http://www.qdaily.com/papers/' + this.props.articlePreviewData.id + '.html' :
             'http://www.qdaily.com/mobs/' + this.props.articlePreviewData.id + '.html';
         return (
-            <BaseA href={hrefUrl} target="_blank" rel="noopener noreferrer">
-                <ImgPreviewContainer >
-                    <ImgPreviewContainerImgBox>
-                        <ImgPreviewContainerImg alt='' src={(this.props.articlePreviewData.imgUrl)} />
+            <BaseA href={hrefUrl} target="_blank" rel="noopener noreferrer" normalSize={this.props.normalSize}>
+                <ImgPreviewContainer normalSize={this.props.normalSize}>
+                    <ImgPreviewContainerImgBox normalSize={this.props.normalSize}>
+                        <ImgPreviewContainerImg alt='' src={(this.props.articlePreviewData.imgUrl)} normalSize={this.props.normalSize} />
                     </ImgPreviewContainerImgBox>
                     <GridKeyPaperFt>
                         <TitleDescriptionBox>
@@ -36,25 +36,27 @@ export default class ArticlePreviewColumnZero extends Component {
 }
 
 const BaseA = styled.a`
-    width: 670px;
-    height: 320px;
+    width: ${props => props.normalSize ? "500px" : "670px"};
+    height: ${props => props.normalSize ? "280px" : "320px"};
     text-decoration: none;
     margin-bottom: 10px;
 `;
 
 const ImgPreviewContainer = styled.div`
     position:relative;
-    width: 670px;
-    height: 320px;
+    width: ${props => props.normalSize ? "500px" : "670px"};
+    height: ${props => props.normalSize ? "280px" : "320px"};
 `;
 
 const ImgPreviewContainerImgBox = ImgPreviewContainer.extend`
     overflow: hidden;
+    width: ${props => props.normalSize ? "500px" : "670px"};
+    height: ${props => props.normalSize ? "280px" : "320px"};
 `;
 
 const ImgPreviewContainerImg = styled.img`
-    width: 670px;
-    height: 320px;
+    width: ${props => props.normalSize ? "500px" : "670px"};
+    height: ${props => props.normalSize ? "280px" : "320px"};
     transition:0.6s ease-in-out;
     &:hover{
         transform: scale(1.1);
@@ -125,6 +127,10 @@ const CategoryBox = styled.p`
     border-radius: 50%;
 `;
 
+ArticlePreviewColumnZero.defaultProps = {
+    normalSize: true,
+}
+
 ArticlePreviewColumnZero.propTypes = {
     articlePreviewData: PropTypes.shape({
         title: PropTypes.string,
@@ -132,4 +138,5 @@ ArticlePreviewColumnZero.propTypes = {
         categoryName: PropTypes.string,
         imgUrl: PropTypes.any,
     }),
+    normalSize: PropTypes.bool,
 }
