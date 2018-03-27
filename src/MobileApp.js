@@ -60,13 +60,15 @@ export default class MobileApp extends Component {
                     dots={true}
                     arrows={false}
                 />
+                <Drawer>
+                    <OpenPanel onClick={this._onMenuClick}>
+                        <MenuSvg width={24} height={24} />
+                    </OpenPanel>
+                </Drawer>
 
-                <OpenPanel onClick={this._onMenuClick}>
-                    <MenuSvg width={24} height={24} />
-                </OpenPanel>
-
-                <PanelOverlay showDrawer={this.state.showDrawer} style={{height:windowHeight}}/>
+                <PanelOverlay showDrawer={this.state.showDrawer} style={{ height: windowHeight }} />
             </MobileAppContainer>
+
         );
     }
 }
@@ -99,6 +101,17 @@ const HeadRight = styled.a`
     }
 `;
 
+const Drawer = styled.div`
+    position:fixed;
+    z-index:6000;
+    left: -12.544rem;
+    top: 0;
+    width: 12.50133333rem;
+    background-color: rgba(30,30,30,.99);
+    color: hsla(0,0%,100%,.3);
+    height: 100%;
+`;
+
 const OpenPanel = styled.a`
     position:fixed;
     display:flex;
@@ -114,13 +127,15 @@ const OpenPanel = styled.a`
 `;
 
 const PanelOverlay = styled.div`
- position:fixed;
+    position:fixed;
+    top: 0;
+    left: 0;
+    display: block;
     z-index: 5999;
-    /* display: ${props => props.showDrawer ? "inline" : "none"}; */
+    display: ${props => props.showDrawer ? "inline" : "none"};
     /* background: #000; */
-    /* opacity: ${props => props.showDrawer ? "1" : "0"};  */
+    opacity: ${props => props.showDrawer ? "1" : "0"}; 
     background: rgba(0,0,0,.4);
     width: 100%;
-    /* height: 100%; */
-    transition-duration: .4s;
+    transition:all 4s;
 `;

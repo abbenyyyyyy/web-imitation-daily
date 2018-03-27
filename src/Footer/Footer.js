@@ -65,70 +65,70 @@ export default class Footer extends Component {
                             <a href="http://www.qdaily.com/tags/1288.html" target="_blank" rel="noopener noreferrer">今日应用</a>
                         </ItemCategory>
                         <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">这世界</a>
+                            <a href="http://www.qdaily.com/tags/1543.html" target="_blank" rel="noopener noreferrer">这世界</a>
                         </ItemCategory>
                         <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">Best on the web</a>
+                            <a href="http://www.qdaily.com/categories/12.html" target="_blank" rel="noopener noreferrer">Best on the web</a>
                         </ItemCategory>
                         <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">商业</a>
+                            <a href="http://www.qdaily.com/categories/18.html" target="_blank" rel="noopener noreferrer">商业</a>
                         </ItemCategory>
                         <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">智能</a>
-                        </ItemCategory>
-                    </ItemsCategories>
-                    <ItemsCategories>
-                        <ItemCategory>
-                            <a href="http://www.qdaily.com/tags/7294.html" target="_blank" rel="noopener noreferrer">设计</a>
-                        </ItemCategory>
-                        <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">时尚</a>
-                        </ItemCategory>
-                        <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">娱乐</a>
-                        </ItemCategory>
-                        <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">城市</a>
-                        </ItemCategory>
-                        <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">游戏</a>
+                            <a href="http://www.qdaily.com/categories/4.html" target="_blank" rel="noopener noreferrer">智能</a>
                         </ItemCategory>
                     </ItemsCategories>
                     <ItemsCategories>
                         <ItemCategory>
-                            <a href="http://www.qdaily.com/tags/7294.html" target="_blank" rel="noopener noreferrer">下载APP</a>
+                            <a href="http://www.qdaily.com/categories/17.html" target="_blank" rel="noopener noreferrer">设计</a>
+                        </ItemCategory>
+                        <ItemCategory>
+                            <a href="http://www.qdaily.com/categories/19.html" target="_blank" rel="noopener noreferrer">时尚</a>
+                        </ItemCategory>
+                        <ItemCategory>
+                            <a href="http://www.qdaily.com/categories/3.html" target="_blank" rel="noopener noreferrer">娱乐</a>
+                        </ItemCategory>
+                        <ItemCategory>
+                            <a href="http://www.qdaily.com/categories/5.html" target="_blank" rel="noopener noreferrer">城市</a>
+                        </ItemCategory>
+                        <ItemCategory>
+                            <a href="http://www.qdaily.com/categories/54.html" target="_blank" rel="noopener noreferrer">游戏</a>
+                        </ItemCategory>
+                    </ItemsCategories>
+                    <ItemsCategories>
+                        <ItemCategory>
+                            <a href="http://www.qdaily.com/aboutus.html" target="_blank" rel="noopener noreferrer">下载APP</a>
                         </ItemCategory>
                         <ItemCategory>
                             <a href="#footer" target="_blank" rel="noopener noreferrer">登录 / 注册</a>
                         </ItemCategory>
                         <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">订阅</a>
+                            <a href="http://www.qdaily.com/feed.xml" target="_blank" rel="noopener noreferrer">订阅</a>
                         </ItemCategory>
                         <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">微博</a>
+                            <a href="https://weibo.com/qdaily" target="_blank" rel="noopener noreferrer">微博</a>
                         </ItemCategory>
                         <ItemCategory>
                             <a href="#footer" target="_blank" rel="noopener noreferrer">微信</a>
                         </ItemCategory>
                         <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">用户协议</a>
+                            <a href="http://www.qdaily.com/policy.html" target="_blank" rel="noopener noreferrer">用户协议</a>
                         </ItemCategory>
                         <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">隐私政策</a>
+                            <a href="http://www.qdaily.com/policy.html#com-privacy" target="_blank" rel="noopener noreferrer">隐私政策</a>
                         </ItemCategory>
                     </ItemsCategories>
                     <ItemsCategories>
                         <ItemCategory>
-                            <a href="http://www.qdaily.com/tags/7294.html" target="_blank" rel="noopener noreferrer">关于好奇心</a>
+                            <a href="http://www.qdaily.com/aboutus.html#aboutus-qdaily" target="_blank" rel="noopener noreferrer">关于好奇心</a>
                         </ItemCategory>
                         <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">联系我们</a>
+                            <a href="http://www.qdaily.com/aboutus.html#aboutus-contact" target="_blank" rel="noopener noreferrer">联系我们</a>
                         </ItemCategory>
                         <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">工作机会</a>
+                            <a href="http://www.qdaily.com/aboutus.html#aboutus-jobs" target="_blank" rel="noopener noreferrer">工作机会</a>
                         </ItemCategory>
                         <ItemCategory>
-                            <a href="#footer" target="_blank" rel="noopener noreferrer">版权声明</a>
+                            <a href="http://www.qdaily.com/policy.html#com-copyright" target="_blank" rel="noopener noreferrer">版权声明</a>
                         </ItemCategory>
                     </ItemsCategories>
                     <Search onSubmit={this._handleSubmit}>
