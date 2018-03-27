@@ -18,9 +18,10 @@ export default class BannerItem extends Component {
         <span style={styles.bannerItemTitleSpanStyle}>{item.title}</span>
       </div>;
     }
+    let background_size = this.props.itemWidth + "px " + this.props.itemHeight + "px";
     return (
-      <a href={'http://www.qdaily.com/articles/'+item.id+'.html'} target="_blank" rel="noopener noreferrer"
-      className="banner-item" style={{ width: width, backgroundImage: `url(${item.imgUrl})` }}>
+      <a href={'http://www.qdaily.com/articles/' + item.id + '.html'} target="_blank" rel="noopener noreferrer"
+        className="banner-item" style={{ width: width, backgroundImage: `url(${item.imgUrl})`, backgroundSize: background_size, overflow: "hidden", }}>
         <div>
           {bannerItemTitle}
           <p>

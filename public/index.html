@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" " />
     <meta name="theme-color" content="#000000">
     <!--
       manifest.json provides metadata used when your web app is added to the
@@ -23,6 +24,10 @@
     <title>Android</title>
   </head>
   <body>
+      <!-- 计算html标签的字体大小，适配移动端rem -->
+      <script>
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 16 + 'px';
+      </script>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
@@ -36,6 +41,6 @@
 
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    -->   
   </body>
 </html>

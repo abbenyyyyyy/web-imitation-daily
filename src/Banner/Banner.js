@@ -5,6 +5,7 @@ import './Banner.css';
 import BannerArrows from './BannerArrows/BannerArrows';
 import BannerDots from './BannerDots/BannerDots';
 import BannerItem from './BannerItem/BannerItem';
+import BannerItemMobile from './BannerItem/BannerItemMobile';
 
 export default class Banner extends Component {
   constructor(props) {
@@ -50,9 +51,17 @@ export default class Banner extends Component {
   render() {
     let count = this.props.items.length;
 
-    let itemNodes = this.props.items.map((item) => {
-      return <BannerItem item={item} count={count} key={item.id} />;
-    });
+    let itemNodes;
+    if (this.props.isMobile) {
+      itemNodes = this.props.items.map((item) => {
+        return <BannerItemMobile item={item} count={count} key={item.id} itemWidth={this.props.bannerWidth} itemHeight={this.props.bannerHeight} />;
+      });
+    } else {
+      itemNodes = this.props.items.map((item) => {
+        return <BannerItem item={item} count={count} key={item.id} itemWidth={this.props.bannerWidth} itemHeight={this.props.bannerHeight} />;
+      });
+    }
+
 
     let arrowsNode = <BannerArrows turn={this.turn.bind(this)} arrowsVisibility={this.state.arrowsVisibility} />;
 
@@ -80,6 +89,7 @@ export default class Banner extends Component {
 Banner.defaultProps = {
   speed: 1,
   delay: 2,
+  isMobile: false,
   pause: true,
   autoplay: true,
   dots: true,
