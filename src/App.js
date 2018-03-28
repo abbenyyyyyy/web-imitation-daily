@@ -50,8 +50,7 @@ export default class App extends Component {
 			}
 		} else {
 			let loadMoreNodeBottom = this.loadMoreNode.getBoundingClientRect().bottom;
-			let windowHeight = document.documentElement.clientHeight;//屏幕高度：
-			// console.log("滚动到底部,开始加载下一页:" + loadMoreNodeBottom + "  屏幕高度：" + windowHeight + "   :" + (this.state.loadTime));
+			let windowHeight = document.documentElement.clientHeight;//屏幕高度
 			if ((loadMoreNodeBottom < windowHeight) && (!this.state.showLoading) && (this.state.loadTime < 2) && this.state.hasMore) {
 				this._fetchMoreHomePageData();
 			}

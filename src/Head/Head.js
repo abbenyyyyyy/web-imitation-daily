@@ -19,11 +19,11 @@ export default class Head extends Component {
 	_moreClick() {
 		this.setState({ moreShow: !this.state.moreShow });
 	}
-	
+
 	render() {
 		return (
 			<AppHeader >
-				<PageHeader style={Object.assign({}, styles.headHeightStyle, !this.props.headExtended && styles.headHeightEnabledStyle)}>
+				<PageHeader extended={this.props.headExtended} >
 					<SectionLeft >
 						<a href="#logo"
 							style={Object.assign({}, styles.logoVertical, !this.props.headExtended && {
@@ -199,6 +199,8 @@ const PageHeader = styled.div`
   	justify-content: center;
   	align-items: center;
   	z-index: 1;
+	height: ${props => props.extended ? '80px' : "60px"};
+	transition: 0.25s all;
 `;
 
 const SectionLeft = styled.div`
@@ -296,13 +298,6 @@ const IconWechat = styled.a`
 `;
 
 const styles = {
-	headHeightStyle: {
-		height: '80px',
-		transition: '0.25s all',
-	},
-	headHeightEnabledStyle: {
-		height: '60px',
-	},
 	hrHeightStyle: {
 		height: '80px',
 		transition: '0.25s all',
