@@ -152,7 +152,6 @@ const NameDescription = styled.div`
 const NameA = styled.a`
     display: block;
     overflow: hidden;
-    /* padding: 0 .34133333rem .42666667rem; */
     margin-bottom:.128rem;
     width: 100%;
     height: 1.28rem;
