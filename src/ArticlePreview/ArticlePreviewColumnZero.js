@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import JoinSvg from './JoinSvg';
+
 // 投票与说说
 export default class ArticlePreviewColumnZero extends Component {
 
@@ -23,7 +25,7 @@ export default class ArticlePreviewColumnZero extends Component {
                         </TitleDescriptionBox>
                     </GridKeyPaperFt>
                     <CountNew>
-                        <img src={require("../img/join_icon.png")} alt="join" style={{ width: "70px", height: "52px", marginTop: "5px" }} />
+                        <JoinSvg width={70} height={64} fill="#ffc81f"/>
                         <JoinCountText>NEW</JoinCountText>
                     </CountNew>
                     <CategoryBox>
@@ -113,7 +115,7 @@ const CountNew = styled.div`
 
 const JoinCountText = styled.span`
     display:block;
-    margin-top: 12px;
+    margin-top: 5px;
     color: #ffc81f;
     font-weight: 700;
     font-size: 20px;

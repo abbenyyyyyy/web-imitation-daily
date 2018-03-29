@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { injectGlobal } from 'styled-components';
 
 import Banner from './Banner/Banner';
 import DefaultHeadSvg from './mobileImg/DefaultHeadSvg'
 import MenuSvg from './mobileImg/MenuSvg';
 import RightArrowSvg from './mobileImg/RightArrowSvg';
+import MobileDrawerItem from './MobileDrawerItem/MobileDrawerItem';
+import HeadIcon from './Head/headSvg/HeadIcon';
+
+injectGlobal`
+    body{
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        font-family: Arial,STHeiti,华文黑体,Microsoft YaHei,微软雅黑,SimSun,宋体,Helvetica,Tahoma,Arial sans-serif;
+        line-height: 1.5;
+        word-break: keep-all; 
+    }
+`;
 
 export default class MobileApp extends Component {
 
@@ -75,7 +89,28 @@ export default class MobileApp extends Component {
                         <NameDescriptionInfo />
                         <NameDescriptionHr />
                     </NameDescription>
+                    <IscrollContainer>
+                        <ItemsCategories>
+                            <MobileDrawerItem iconCategory="logo" description="首页" isFirst={true} />
+                            <div>
+                                <MobileDrawerItem iconCategory="category" description="新闻分类" isFirst={false} />
+                            </div>
 
+                            <MobileDrawerItem iconCategory="head_column" description="栏目中心" isFirst={false} />
+                            <MobileDrawerItem iconCategory="head_flask" description="生活研究所" isFirst={false} />
+                        </ItemsCategories>
+                    </IscrollContainer>
+                    <SidebarPanelFt>
+                        <NameDescriptionHr style={{ marginBottom: ".64rem", }} />
+                        <SidebarPanelFtBox>
+                            <DrawerSearch href="#moblieSearch">
+                                <MockInput>搜索
+                            <HeadIcon category="head_search" style={{ width: 16, height: 16, fill: "hsla(0,0%,100%,.3)" }} />
+                                </MockInput>
+                            </DrawerSearch>
+                            <AboutUs href="#aboutUs">关于我们</AboutUs>
+                        </SidebarPanelFtBox>
+                    </SidebarPanelFt>
                     <OpenPanel showDrawer={this.state.showDrawer} onClick={this._onMenuClick}>
                         <SvgBox showDrawer={this.state.showDrawer}>
                             <MenuSvg width={24} height={24} />
@@ -85,10 +120,8 @@ export default class MobileApp extends Component {
                         </SvgBox>
                     </OpenPanel>
                 </Drawer>
-
                 <PanelOverlay showDrawer={this.state.showDrawer} style={{ height: windowHeight }} />
             </MobileAppContainer>
-
         );
     }
 }
@@ -147,6 +180,7 @@ const SidebarPanel = styled.div`
 
 const NameDescription = styled.div`
     margin: 0 1.28rem;
+    padding-bottom: .42666667rem;
 `;
 
 const NameA = styled.a`
@@ -192,7 +226,60 @@ const PackeryLoginAvatar = styled.a`
 `;
 
 const IscrollContainer = styled.div`
-    
+    padding: 0 1.28rem;
+    flex: 1 0 auto;
+`;
+
+const ItemsCategories = styled.ul`
+    display:flex;
+    flex-direction:column;
+`;
+
+const SidebarPanelFt = styled.div`
+    position: relative;
+    margin: 0 1.28rem;
+    padding: 1.06666667rem 0 .93866667rem;
+    flex: 0 0 auto;
+    display:flex;
+    flex-direction:column;
+`;
+
+const SidebarPanelFtBox = styled.div`
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+`;
+
+const DrawerSearch = styled.a`
+    display: inline-block;
+    text-decoration:none;
+    color: hsla(0,0%,100%,.3);
+    width: 5.67466667rem;
+`;
+
+const MockInput = styled.div`
+    background-color:#333;
+    padding: 0 .512rem;
+    height: 1.19466667rem;
+    border-radius: 1.19466667rem;
+    font-size: 12px;
+    line-height: 1.19466667rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+`;
+
+const AboutUs = styled.a`
+    display: inline-block;
+    width: 3.41333334rem;
+    border: 1px solid hsla(0,0%,100%,.3);
+    color: hsla(0,0%,100%,.3);
+    text-decoration:none;
+    height: 1.10933rem;
+    line-height:1.10933rem;
+    border-radius: 1.10933rem;
+    font-size: 12px;
+    text-align:center;
 `;
 
 const OpenPanel = styled.a`

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Transition } from 'react-transition-group';
 import styled from 'styled-components';
 
 import HeadIcon from './headSvg/HeadIcon';
@@ -36,7 +35,7 @@ export default class Head extends Component {
 								alt="head-text" />
 						</a>
 						<ItemsMainCatesClearfix >
-							<HrefSvgView category='head_flask' text='好奇心研究所' headIconWidth={17} headIconHeight={22} headIconMarginRight={12} />
+							<HrefSvgView category='head_flask' text='好奇心研究所' headIconWidth={21} headIconHeight={22} headIconMarginRight={12} />
 							<HrefSvgView category='head_column' text='栏目中心' headIconWidth={22} headIconHeight={22} headIconMarginRight={7}
 								style={{ marginLeft: 40 }} />
 						</ItemsMainCatesClearfix>
@@ -83,7 +82,9 @@ export default class Head extends Component {
 							zIndex: '66', backgroundColor: '#000', listStyleType: 'none', padding: '0 20px',
 						}} onClick={this._moreClick}>
 							<span style={{ textDecoration: 'none', color: '#fff', fontSize: '16px', cursor: 'pointer', }}>全部分类</span>
-							<Triangle in={!!this.state.moreShow} />
+							<Triangle moreShow={this.state.moreShow}>
+								<svg t="1519716943693" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="660" width="16" height="16"><defs><style type="text/css"></style></defs><path d="M191.815 319.981h640.37l-320.184 384.016z" p-id="661" fill="#fff"></path></svg>
+							</Triangle>
 						</div>
 					</div>
 					<div style={{
@@ -161,19 +162,6 @@ export default class Head extends Component {
 	}
 }
 
-const Triangle = ({ in: inProp }) => (
-	<Transition in={inProp} timeout={1}>
-		{(state) => (
-			<div style={{
-				...defaultStyle,
-				...transitionStyles[state]
-			}}>
-				<svg t="1519716943693" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="660" width="16" height="16"><defs><style type="text/css"></style></defs><path d="M191.815 319.981h640.37l-320.184 384.016z" p-id="661" fill="#fff"></path></svg>
-			</div>
-		)}
-	</Transition>
-);
-
 const AppHeader = styled.div`
 	width: 100%;
 	position: fixed;
@@ -239,6 +227,15 @@ const ItemCate = styled.li`
 	a:hover {
 		color: #ffc81f;
 	}
+`;
+
+const Triangle = styled.div`
+	width: 16px;
+	height: 16px;
+	margin-left: 2px;
+	cursor: pointer;
+	transform:${props => props.moreShow ? "rotate(180deg)" : "rotate(0deg)"};
+    transition:transform 0.5s;
 `;
 
 const GoDownloadApp = styled.a`
@@ -336,19 +333,4 @@ const styles = {
 		lineHeight: '32px',
 		visibility: 'hidden',
 	},
-
 }
-
-const defaultStyle = {
-	width: '16px',
-	height: '16px',
-	marginLeft: '2px',
-	cursor: 'pointer',
-}
-
-const transitionStyles = {
-	entering: { transition: '0.5s all', transform: 'rotate(90deg)' },
-	entered: { transition: '0.5s all', transform: 'rotate(180deg)' },
-	exiting: { transition: '0.5s all', transform: 'rotate(180deg)' },
-	exited: { transition: '0.5s all', transform: 'rotate(0deg)' },
-};
