@@ -93,11 +93,22 @@ export default class MobileApp extends Component {
                         <ItemsCategories>
                             <MobileDrawerItem iconCategory="logo" description="首页" isFirst={true} />
                             <div>
-                                <MobileDrawerItem iconCategory="category" description="新闻分类" isFirst={false} />
+                                <MobileDrawerItem iconCategory="category" description="新闻分类" />
                             </div>
-
-                            <MobileDrawerItem iconCategory="head_column" description="栏目中心" isFirst={false} />
-                            <MobileDrawerItem iconCategory="head_flask" description="生活研究所" isFirst={false} />
+                            <ItemsCategories>
+                                <MobileDrawerItem description="长文章" />
+                                <MobileDrawerItem description=" 10 个图 " />
+                                <MobileDrawerItem description=" Top 15 " />
+                                <MobileDrawerItem description="商业" />
+                                <MobileDrawerItem description="智能" />
+                                <MobileDrawerItem description="设计" />
+                                <MobileDrawerItem description="时尚" />
+                                <MobileDrawerItem description="娱乐" />
+                                <MobileDrawerItem description="城市" />
+                                <MobileDrawerItem description="游戏" />
+                            </ItemsCategories>
+                            <MobileDrawerItem iconCategory="head_column" description="栏目中心" />
+                            <MobileDrawerItem iconCategory="head_flask" description="生活研究所" />
                         </ItemsCategories>
                     </IscrollContainer>
                     <SidebarPanelFt>
@@ -170,6 +181,7 @@ const Drawer = styled.div`
 
 const SidebarPanel = styled.div`
     width: 100%;
+    flex: 0 0 auto;
     img{
         display: block;
         width: 9.514rem;
@@ -179,6 +191,7 @@ const SidebarPanel = styled.div`
 `;
 
 const NameDescription = styled.div`
+    flex: 0 0 auto;
     margin: 0 1.28rem;
     padding-bottom: .42666667rem;
 `;
@@ -228,6 +241,9 @@ const PackeryLoginAvatar = styled.a`
 const IscrollContainer = styled.div`
     padding: 0 1.28rem;
     flex: 1 0 auto;
+    overflow-y: auto;
+    /* min-height: 250px; */
+    max-height: 19.25973333333333rem;
 `;
 
 const ItemsCategories = styled.ul`
@@ -238,7 +254,7 @@ const ItemsCategories = styled.ul`
 const SidebarPanelFt = styled.div`
     position: relative;
     margin: 0 1.28rem;
-    padding: 1.06666667rem 0 .93866667rem;
+    /* padding: 1.06666667rem 0 .93866667rem; */
     flex: 0 0 auto;
     display:flex;
     flex-direction:column;

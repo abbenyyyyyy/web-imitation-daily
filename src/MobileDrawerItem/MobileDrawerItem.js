@@ -8,19 +8,23 @@ import MobileClassifyIcon from '../mobileImg/MobileClassifyIcon';
 
 export default class MobileDrawerItem extends Component {
     render() {
-        let svgFill = this.props.isFirst ? "#ffc81f" : "hsla(0,0%,100%,.5)";
+        let _color = this.props.isFirst ? "#ffc81f" : "hsla(0,0%,100%,.5)";
         let iconNode;
-
         if (this.props.iconCategory === "logo" || this.props.iconCategory === "category") {
-            iconNode = <DrawerSvgIcon iconCategory={this.props.iconCategory} width={25} height={25} fill={svgFill} />;
+            iconNode = <DrawerSvgIcon iconCategory={this.props.iconCategory} width={25} height={25} fill={_color} />;
+        } else if (this.props.iconCategory === "head_column" || this.props.iconCategory === "head_flask") {
+            iconNode = <HeadIcon category={this.props.iconCategory} style={{ width: 23, height: 23, fill: _color }} />;
         } else {
-            iconNode = <HeadIcon category={this.props.iconCategory} style={{ width: 23, height: 23, fill: svgFill }} />;
+            _color = "hsla(0,0%,100%,.4)";
+            iconNode = <MobileClassifyIcon classify={this.props.description} />
         }
         return (
-            <ItemCurrent>
+            <ItemCurrent description={this.props.description}>
                 <ItemA href={this.props.aHref} >
-                    {iconNode}
-                    <ItemText isFirst={this.props.isFirst}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "25px", height: "25px" }}>
+                        {iconNode}
+                    </div>
+                    <ItemText _color={_color}>
                         {this.props.description}
                     </ItemText>
                 </ItemA>
@@ -34,7 +38,7 @@ const ItemCurrent = styled.li`
     width: 100%;
     list-style-type: none;
     height: 2.13333333rem;
-    color: hsla(0,0%,100%,.5);
+    /* color: ${props => props.description === "" ? "hsla(0,0%,100%,.4)" : "hsla(0,0%,100%,.5)"}; */
     font-size: .768rem;
     line-height: .768rem;
 `;
@@ -49,7 +53,7 @@ const ItemA = styled.a`
 
 const ItemText = styled.span`
     padding-left: 1.706rem;
-    color: ${props => props.isFirst ? "#ffc81f" : "hsla(0,0%,100%,.5)"};
+    color: ${props => props._color};
 `;
 
 MobileDrawerItem.propTypes = {
@@ -62,5 +66,6 @@ MobileDrawerItem.propTypes = {
 
 MobileDrawerItem.defaultProps = {
     aHref: "#null",
+    iconCategory: "1",
     isFirst: false,
 }
