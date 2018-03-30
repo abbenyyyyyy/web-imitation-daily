@@ -5,8 +5,7 @@ import { injectGlobal } from 'styled-components';
 
 import Banner from './Banner/Banner';
 import DefaultHeadSvg from './mobileImg/DefaultHeadSvg'
-import MenuSvg from './mobileImg/MenuSvg';
-import RightArrowSvg from './mobileImg/RightArrowSvg';
+import OpenPanelIcon from './mobileImg/OpenPanelIcon';
 import MobileDrawerItem from './MobileDrawerItem/MobileDrawerItem';
 import HeadIcon from './Head/headSvg/HeadIcon';
 
@@ -92,9 +91,7 @@ export default class MobileApp extends Component {
                     <IscrollContainer>
                         <ItemsCategories>
                             <MobileDrawerItem iconCategory="logo" description="首页" isFirst={true} />
-                            <div>
-                                <MobileDrawerItem iconCategory="category" description="新闻分类" />
-                            </div>
+                            <MobileDrawerItem iconCategory="category" description="新闻分类" canExtend={true} />
                             <ItemsCategories>
                                 <MobileDrawerItem description="长文章" />
                                 <MobileDrawerItem description=" 10 个图 " />
@@ -124,10 +121,10 @@ export default class MobileApp extends Component {
                     </SidebarPanelFt>
                     <OpenPanel showDrawer={this.state.showDrawer} onClick={this._onMenuClick}>
                         <SvgBox showDrawer={this.state.showDrawer}>
-                            <MenuSvg width={24} height={24} />
+                            <OpenPanelIcon width={24} height={24} iconCategory="menu" />
                         </SvgBox>
                         <SvgBox showDrawer={!this.state.showDrawer}>
-                            <RightArrowSvg width={24} height={24} />
+                            <OpenPanelIcon width={24} height={24} iconCategory="rightArrow" />
                         </SvgBox>
                     </OpenPanel>
                 </Drawer>
@@ -240,9 +237,8 @@ const PackeryLoginAvatar = styled.a`
 
 const IscrollContainer = styled.div`
     padding: 0 1.28rem;
-    flex: 1 0 auto;
+    /* flex: 1; */
     overflow-y: auto;
-    /* min-height: 250px; */
     max-height: 19.25973333333333rem;
 `;
 
@@ -254,10 +250,11 @@ const ItemsCategories = styled.ul`
 const SidebarPanelFt = styled.div`
     position: relative;
     margin: 0 1.28rem;
-    /* padding: 1.06666667rem 0 .93866667rem; */
+    padding: 1.06666667rem 0 .93866667rem;
     flex: 0 0 auto;
     display:flex;
     flex-direction:column;
+    line-height:130px;
 `;
 
 const SidebarPanelFtBox = styled.div`

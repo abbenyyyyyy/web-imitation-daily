@@ -50,8 +50,7 @@ export default class Banner extends Component {
 
   render() {
     let count = this.props.items.length;
-
-    let itemNodes;
+    let itemNodes = null;
     if (this.props.isMobile) {
       itemNodes = this.props.items.map((item) => {
         return <BannerItemMobile item={item} count={count} key={item.id} itemWidth={this.props.bannerWidth} itemHeight={this.props.bannerHeight} />;
@@ -61,12 +60,8 @@ export default class Banner extends Component {
         return <BannerItem item={item} count={count} key={item.id} itemWidth={this.props.bannerWidth} itemHeight={this.props.bannerHeight} />;
       });
     }
-
-
     let arrowsNode = <BannerArrows turn={this.turn.bind(this)} arrowsVisibility={this.state.arrowsVisibility} />;
-
     let dotsNode = <BannerDots turn={this.turn.bind(this)} count={count} nowLocal={this.state.nowLocal} />;
-
     return (
       <div style={{ width: this.props.bannerWidth, height: this.props.bannerHeight }}
         className="banner"
