@@ -8,6 +8,24 @@ import MobileClassifyIcon from '../mobileImg/MobileClassifyIcon';
 import ArrowIcon from '../mobileImg/ArrowIcon';
 
 export default class MobileDrawerItem extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            extended: false,
+        }
+        this._onExtendClick = this._onExtendClick.bind(this);
+    }
+
+    _onExtendClick() {
+        if (this.props.canExtend) {
+            this.setState(prevState => (
+                { extended: !prevState.extended }
+            ));
+            this.props.rotate();
+        }
+    }
+
     render() {
         let _color = this.props.isFirst ? "#ffc81f" : "hsla(0,0%,100%,.5)";
         let _height = "2.13333333rem";
@@ -21,10 +39,10 @@ export default class MobileDrawerItem extends Component {
             _height = "1.792rem";
             iconNode = <MobileClassifyIcon classify={this.props.description} />
         }
-        let extendNode = this.props.canExtend ? <ArrowIcon /> : null;
+        let extendNode = this.props.canExtend ? <ArrowContainer up={this.state.extended}><ArrowIcon /></ArrowContainer> : null;
         return (
-            <ItemCurrent _height={_height}>
-                <ItemA href={this.props.aHref} >
+            <ItemCurrent _height={_height} show={this.props.show}>
+                <ItemA href={this.props.aHref} onClick={this._onExtendClick}>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "25px", height: "25px" }}>
                         {iconNode}
                     </div>
@@ -43,6 +61,7 @@ const ItemCurrent = styled.li`
     width: 100%;
     list-style-type: none;
     height: ${props => props._height};
+    display:${props => props.show ? "block" : "none"};
     font-size: .768rem;
     line-height: .768rem;
 `;
@@ -61,6 +80,11 @@ const ItemText = styled.span`
     color: ${props => props._color};
 `;
 
+const ArrowContainer = styled.div`
+    transform:${props => props.up ? "rotate(180deg)" : "rotate(0)"};
+    transition:transform 0.5s;
+`;
+
 MobileDrawerItem.propTypes = {
     iconCategory: PropTypes.string,
     spanColor: PropTypes.string,
@@ -68,6 +92,8 @@ MobileDrawerItem.propTypes = {
     aHref: PropTypes.string,
     isFirst: PropTypes.bool,
     canExtend: PropTypes.bool,
+    show:PropTypes.bool,
+    rotate: PropTypes.func,
 }
 
 MobileDrawerItem.defaultProps = {
@@ -75,4 +101,5 @@ MobileDrawerItem.defaultProps = {
     iconCategory: "1",
     isFirst: false,
     canExtend: false,
+    show:true,
 }

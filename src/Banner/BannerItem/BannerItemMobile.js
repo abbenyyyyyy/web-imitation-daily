@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import MobileClassifyIcon from '../../mobileImg/MobileClassifyIcon';
+
 export default class BannerItemMobile extends Component {
 
     render() {
@@ -15,6 +17,7 @@ export default class BannerItemMobile extends Component {
                         <h1 >{item.title}</h1>
                     </BannerItemTitle>
                     <BannerItemCategory>
+                        <MobileClassifyIcon classify={item.categoryName} fill="#ffc81f" height={12} width={12}/>
                         <span>{item.categoryName}</span>
                     </BannerItemCategory>
                 </div>
@@ -41,6 +44,9 @@ const BannerItemCategory = styled.div`
     background-color: #000;
     background-color: rgba(0,0,0,.4);
     line-height: 16px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
     span{
         margin-left: 3px;
         padding: 2px 0;

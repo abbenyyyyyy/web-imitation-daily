@@ -25,15 +25,23 @@ export default class MobileApp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showDrawer: true,
+            showDrawer: false,
+            extended: false,
             bannerData: [],
         };
         this._onMenuClick = this._onMenuClick.bind(this);
+        this._onExtendClick = this._onExtendClick.bind(this);
     }
 
     _onMenuClick() {
         this.setState(prevState => (
             { showDrawer: !prevState.showDrawer }
+        ));
+    }
+
+    _onExtendClick() {
+        this.setState(prevState => (
+            { extended: !prevState.extended }
         ));
     }
 
@@ -91,19 +99,20 @@ export default class MobileApp extends Component {
                     <IscrollContainer>
                         <ItemsCategories>
                             <MobileDrawerItem iconCategory="logo" description="首页" isFirst={true} />
-                            <MobileDrawerItem iconCategory="category" description="新闻分类" canExtend={true} />
-                            <ItemsCategories>
-                                <MobileDrawerItem description="长文章" />
-                                <MobileDrawerItem description=" 10 个图 " />
-                                <MobileDrawerItem description=" Top 15 " />
-                                <MobileDrawerItem description="商业" />
-                                <MobileDrawerItem description="智能" />
-                                <MobileDrawerItem description="设计" />
-                                <MobileDrawerItem description="时尚" />
-                                <MobileDrawerItem description="娱乐" />
-                                <MobileDrawerItem description="城市" />
-                                <MobileDrawerItem description="游戏" />
-                            </ItemsCategories>
+                            <MobileDrawerItem iconCategory="category" description="新闻分类" canExtend={true}
+                                rotate={this._onExtendClick} />
+                            <ItemsCategoriesCanExtend show={this.state.extended}>
+                                <MobileDrawerItem description="长文章" show={this.state.extended} />
+                                <MobileDrawerItem description=" 10 个图 " show={this.state.extended} />
+                                <MobileDrawerItem description=" Top 15 " show={this.state.extended} />
+                                <MobileDrawerItem description="商业" show={this.state.extended} />
+                                <MobileDrawerItem description="智能" show={this.state.extended} />
+                                <MobileDrawerItem description="设计" show={this.state.extended} />
+                                <MobileDrawerItem description="时尚" show={this.state.extended} />
+                                <MobileDrawerItem description="娱乐" show={this.state.extended} />
+                                <MobileDrawerItem description="城市" show={this.state.extended} />
+                                <MobileDrawerItem description="游戏" show={this.state.extended} />
+                            </ItemsCategoriesCanExtend>
                             <MobileDrawerItem iconCategory="head_column" description="栏目中心" />
                             <MobileDrawerItem iconCategory="head_flask" description="生活研究所" />
                         </ItemsCategories>
@@ -128,7 +137,7 @@ export default class MobileApp extends Component {
                         </SvgBox>
                     </OpenPanel>
                 </Drawer>
-                <PanelOverlay showDrawer={this.state.showDrawer} style={{ height: windowHeight }} />
+                <PanelOverlay showDrawer={this.state.showDrawer} style={{ height: windowHeight }} onClick={this._onMenuClick} />
             </MobileAppContainer>
         );
     }
@@ -237,7 +246,7 @@ const PackeryLoginAvatar = styled.a`
 
 const IscrollContainer = styled.div`
     padding: 0 1.28rem;
-    /* flex: 1; */
+    flex: 1;
     overflow-y: auto;
     max-height: 19.25973333333333rem;
 `;
@@ -245,6 +254,12 @@ const IscrollContainer = styled.div`
 const ItemsCategories = styled.ul`
     display:flex;
     flex-direction:column;
+`;
+
+const ItemsCategoriesCanExtend = ItemsCategories.extend`
+    height: ${props => props.show ? "17.92rem" : "0"};
+    visibility:${props => props.show ? "visible" : "hidden"};
+    transition:all 0.4s;
 `;
 
 const SidebarPanelFt = styled.div`
@@ -326,6 +341,7 @@ const PanelOverlay = styled.div`
     display: block;
     z-index: 5999;
     opacity: ${props => props.showDrawer ? "1" : "0"}; 
+    visibility:${props => props.showDrawer ? "visible" : "hidden"};
     background: rgba(0,0,0,.4);
     width: 100%;
     transition:opacity 0.5s;
