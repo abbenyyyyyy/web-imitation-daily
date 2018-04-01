@@ -9,7 +9,7 @@ import OpenPanelIcon from './mobileImg/OpenPanelIcon';
 import MobileDrawerItem from './MobileDrawerItem/MobileDrawerItem';
 import HeadIcon from './Head/headSvg/HeadIcon';
 import MobileArticlePreviewNormal from './ArticlePreview/MobileArticlePreviewNormal';
-import BannerItemMobile from './Banner/BannerItem/BannerItemMobile';
+import MobileArticlePreviewTwo from './ArticlePreview/MobileArticlePreviewTwo';
 
 injectGlobal`
     body{
@@ -86,7 +86,7 @@ export default class MobileApp extends Component {
                     if (item.categoryName === "投票" || item.categoryName === "我说") {
                         return null;
                     } else {
-                        return <BannerItemMobile item={item} key={item.id} itemWidth={windowWidth} itemHeight="9.75rem" />;
+                        return <MobileArticlePreviewTwo articlePreviewData={item} key={item.id} itemWidth={windowWidth} itemHeight="9.75rem" />;
                     }
             }
         });
