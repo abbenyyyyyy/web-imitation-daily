@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import ClassifyIcon from '../img/ClassifyIcon';
-import ArticlePreviewIcon from './ArticlePreviewIcon';
+import PreviewInfoContainerNumber from './PreviewInfoContainerNumber';
 
 export default class ArticlePreviewColumnNormal extends Component {
 
@@ -17,26 +17,6 @@ export default class ArticlePreviewColumnNormal extends Component {
             printTime = dis === 0 ? '半小时前' : dis + '小时前';
         } else {
             printTime = (date.getMonth() + 1) + "月" + date.getDate() + '日';
-        }
-        //构建留言数目与点like人数显示元素
-        let imgPreviewInfoContainerNumber = null;
-        if (this.props.articlePreviewData.commentCount > 0 && this.props.articlePreviewData.praiseCount > 0) {
-            imgPreviewInfoContainerNumber = <div style={{ color: "#d1d1d1" }}>
-                <ArticlePreviewIcon category='message' width={10} height={10} />
-                <span style={{ paddingLeft: 5, paddingRight: 10, }}>{this.props.articlePreviewData.commentCount}</span>
-                <ArticlePreviewIcon category='like' width={10} height={10} />
-                <span style={{ paddingLeft: 5, }}>{this.props.articlePreviewData.praiseCount}</span>
-            </div>;
-        } else if (this.props.articlePreviewData.commentCount > 0) {
-            imgPreviewInfoContainerNumber = <div style={{ color: "#d1d1d1" }}>
-                <ArticlePreviewIcon category='message' width={10} height={10} />
-                <span style={{ paddingLeft: 5, }}>{this.props.articlePreviewData.commentCount}</span>
-            </div>;
-        } else if (this.props.articlePreviewData.praiseCount > 0) {
-            imgPreviewInfoContainerNumber = <div style={{ color: "#d1d1d1" }}>
-                <ArticlePreviewIcon category='like' width={10} height={10} />
-                <span style={{ paddingLeft: 5, }}>{this.props.articlePreviewData.praiseCount}</span>
-            </div>;
         }
         let imgRealUrlSuffix = this.props.articlePreviewData.cssColumn === 1 ? "/columnone245+185" : "/columntwo500+185";
         //构建新闻标题显示元素
@@ -77,7 +57,10 @@ export default class ArticlePreviewColumnNormal extends Component {
                 {previewTitleNode}
                 <ImgPreviewInfoContainer columnCount={this.props.articlePreviewData.cssColumn} >
                     <span>{printTime}</span>
-                    {imgPreviewInfoContainerNumber}
+                    <PreviewInfoContainerNumber praiseCount={this.props.articlePreviewData.praiseCount}
+                        commentCount={this.props.articlePreviewData.commentCount}
+                        svgFill="#d1d1d1" svgWidth={10} textMarginLeft={5} textMarginRight={10}
+                    />
                 </ImgPreviewInfoContainer>
             </BaseA>
         );
@@ -131,7 +114,6 @@ const ImgPreviewTitle = styled.div`
     padding: 12px 10px 0;
     h3{
         font-weight: 400;
-        /* max-height: 44px; */
         color: #0f1419;
         text-align: left;
         overflow:hidden;
@@ -142,8 +124,6 @@ const ImgPreviewTitle = styled.div`
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         line-height: ${props => props.columnCount === 1 ? "22px" : "25px"};
-        /* height: ${props => props.columnCount === 1 ? "100%" : "25px"}; */
-        /* height:100%; */
         font-size: ${props => props.columnCount === 1 ? "16px" : "20px"};
         span{
             display: inline-block;
