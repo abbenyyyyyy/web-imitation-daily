@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 JoinSvg.propTypes = {
     classify: PropTypes.string,
-    width: PropTypes.number,
-    height: PropTypes.number,
     fill: PropTypes.string,
 }
 

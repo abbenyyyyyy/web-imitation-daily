@@ -19,6 +19,7 @@ export default class CategoryView extends Component {
 const CategoryContainer = styled.div`
     padding: 0 5px;
     height: 16px;
+    width: 39px;
     background-color: #000;
     background-color: rgba(0,0,0,.4);
     line-height: 16px;
@@ -35,7 +36,10 @@ const CategoryContainer = styled.div`
 
 CategoryView.propTypes = {
     categoryName: PropTypes.string,
-    style:{
-        position:"static",
+}
+
+CategoryView.defaultProps = {
+    style: {
+        position: "static",
     }
 }

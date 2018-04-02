@@ -6,7 +6,7 @@ import MobileApp from './MobileApp';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-    <div>
+    <React.Fragment>
         <MediaQuery query='(min-device-width:1224px)'>
             {/* 台式机或笔记本电脑 */}
             <App />
@@ -15,6 +15,6 @@ ReactDOM.render(
             {/* 平板电脑或手机 */}
             <MobileApp />
         </MediaQuery>
-    </div>,
+    </React.Fragment>,
     document.getElementById('root'));
 registerServiceWorker();

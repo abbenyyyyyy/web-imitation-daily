@@ -19,7 +19,7 @@ export default class MobileArticlePreviewNormal extends Component {
         }
         let backgroundImageUrl = this.props.articlePreviewData.imgUrl + "/mobilecolumn320+210"
         return (
-            <BaseA>
+            <BaseA href={'http://m.qdaily.com/mobile/articles/' + this.props.articlePreviewData.id + '.html'} target="_blank" rel="noopener noreferrer">
                 <GridArticleHd style={{ backgroundImage: `url(${backgroundImageUrl})`, backgroundSize: "7.9rem 5.25rem" }}>
                     <CategoryView categoryName={this.props.articlePreviewData.categoryName}
                         style={{ position: "absolute", bottom: "8px", left: "4px", }} />
@@ -47,6 +47,7 @@ const BaseA = styled.a`
     margin-bottom:0.1rem;
     background-color: #fff;
     font-size: 12px;
+    text-decoration:none;
 `;
 
 const GridArticleHd = styled.div`
@@ -64,6 +65,7 @@ const GridArticleBd = styled.div`
         font-size: 16px;
         line-height: 1rem;
         word-break:break-all;
+        color: #0f1419;
     };
     span{
         color: #b2b2b2;

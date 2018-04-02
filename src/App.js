@@ -41,6 +41,7 @@ export default class App extends Component {
 		this._onToTopClick = this._onToTopClick.bind(this);
 		this._onLoadMoreClick = this._onLoadMoreClick.bind(this);
 		this._fetchMoreHomePageData = this._fetchMoreHomePageData.bind(this);
+		axios.defaults.baseURL = "http://127.0.0.1:8080";
 	}
 
 	_scroolHandler() {

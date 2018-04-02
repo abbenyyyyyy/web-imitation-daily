@@ -18,14 +18,14 @@ export default class ArticlePreviewColumnZero extends Component {
                     <ImgPreviewContainerImgBox normalSize={this.props.normalSize}>
                         <ImgPreviewContainerImg alt='' src={(this.props.articlePreviewData.imgUrl)} normalSize={this.props.normalSize} />
                     </ImgPreviewContainerImgBox>
-                    <GridKeyPaperFt>
+                    <GridKeyPaperFt normalSize={this.props.normalSize}>
                         <TitleDescriptionBox>
                             <TitleBox>{this.props.articlePreviewData.title}</TitleBox>
-                            <DescriptionBox>{this.props.articlePreviewData.description}</DescriptionBox>
+                            <DescriptionBox normalSize={this.props.normalSize}>{this.props.articlePreviewData.description}</DescriptionBox>
                         </TitleDescriptionBox>
                     </GridKeyPaperFt>
                     <CountNew>
-                        <JoinSvg width={70} height={64} fill="#ffc81f"/>
+                        <JoinSvg width={70} height={64} fill="#ffc81f" />
                         <JoinCountText>NEW</JoinCountText>
                     </CountNew>
                     <CategoryBox>
@@ -66,11 +66,16 @@ const ImgPreviewContainerImg = styled.img`
 `;
 
 const GridKeyPaperFt = styled.div`
-    position:relative;
-    bottom:80px;
-    height:80px;
-    padding:0px 25px;
-    background-color: rgba(0,0,0,.5);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    box-sizing:border-box;
+    display:block;
+    overflow: hidden;
+    padding: ${props => props.normalSize ? "0 20px 12px" : "12px 25px"};
+    background-color: ${props => props.normalSize ? "rgba(0,0,0,0)" : "rgba(0,0,0,.5)"};
 `;
 
 const TitleDescriptionBox = styled.div`
@@ -97,7 +102,7 @@ const TitleBox = styled.h3`
 
 const DescriptionBox = styled.p`
     margin: 8px 0 0;
-    color: #ccc;
+    color: ${props => props.normalSize ? "#d2d2d2" : "#ccc"};
     font-size: 14px;
     line-height: 22px;
 `;
