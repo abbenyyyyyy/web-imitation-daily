@@ -42,7 +42,7 @@ export default class MobileDrawerItem extends Component {
         let extendNode = this.props.canExtend ? <ArrowContainer up={this.state.extended}><ArrowIcon /></ArrowContainer> : null;
         return (
             <ItemCurrent _height={_height} show={this.props.show}>
-                <ItemA href={this.props.aHref} onClick={this._onExtendClick}>
+                <ItemA href={this.props.aHref}  onClick={this._onExtendClick}>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "25px", height: "25px" }}>
                         {iconNode}
                     </div>

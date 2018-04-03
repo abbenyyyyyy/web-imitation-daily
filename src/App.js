@@ -234,7 +234,7 @@ export default class App extends Component {
 									<p>登录查看你的好奇心指数</p>
 								</PackeryLoginFt>
 							</PackeryLoginContainer>
-							<PackeryDowload href="#dowload">
+							<PackeryDowload href="http://www.qdaily.com/aboutus.html" target="_blank" rel="noopener noreferrer">
 								<img src={require('./img/download-banner-x640.png')} width="245" height="160" alt="" />
 							</PackeryDowload>
 						</div>

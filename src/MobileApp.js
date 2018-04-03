@@ -159,7 +159,7 @@ export default class MobileApp extends Component {
         return (
             <MobileAppContainer >
                 <MobileHead>
-                    <a href="#reolad" style={{ display: "flex", }}>
+                    <a href="/" style={{ display: "flex", }}>
                         <img src={require("./mobileImg/mobilelogo.png")} style={{ width: "83.48px", height: "38px" }} alt="mobilelogo" />
                     </a>
                     <HeadRight href="#login" >
@@ -202,34 +202,34 @@ export default class MobileApp extends Component {
                     </NameDescription>
                     <IscrollContainer>
                         <ItemsCategories>
-                            <MobileDrawerItem iconCategory="logo" description="首页" isFirst={true} />
+                            <MobileDrawerItem iconCategory="logo" description="首页" isFirst={true} aHref="/"/>
                             <MobileDrawerItem iconCategory="category" description="新闻分类" canExtend={true}
                                 rotate={this._onExtendClick} />
                             <ItemsCategoriesCanExtend show={this.state.extended}>
-                                <MobileDrawerItem description="长文章" show={this.state.extended} />
-                                <MobileDrawerItem description=" 10 个图 " show={this.state.extended} />
-                                <MobileDrawerItem description=" Top 15 " show={this.state.extended} />
-                                <MobileDrawerItem description="商业" show={this.state.extended} />
-                                <MobileDrawerItem description="智能" show={this.state.extended} />
-                                <MobileDrawerItem description="设计" show={this.state.extended} />
-                                <MobileDrawerItem description="时尚" show={this.state.extended} />
-                                <MobileDrawerItem description="娱乐" show={this.state.extended} />
-                                <MobileDrawerItem description="城市" show={this.state.extended} />
-                                <MobileDrawerItem description="游戏" show={this.state.extended} />
+                                <MobileDrawerItem description="长文章" show={this.state.extended} aHref="http://m.qdaily.com/mobile/tags/1068.html"/>
+                                <MobileDrawerItem description=" 10 个图 " show={this.state.extended} aHref="http://m.qdaily.com/mobile/tags/1615.html"/>
+                                <MobileDrawerItem description=" Top 15 " show={this.state.extended} aHref="http://m.qdaily.com/mobile/tags/29.html"/>
+                                <MobileDrawerItem description="商业" show={this.state.extended} aHref="http://m.qdaily.com/mobile/tags/18.html"/>
+                                <MobileDrawerItem description="智能" show={this.state.extended} aHref="http://m.qdaily.com/mobile/tags/4.html"/>
+                                <MobileDrawerItem description="设计" show={this.state.extended} aHref="http://m.qdaily.com/mobile/tags/17.html"/>
+                                <MobileDrawerItem description="时尚" show={this.state.extended} aHref="http://m.qdaily.com/mobile/tags/19.html"/>
+                                <MobileDrawerItem description="娱乐" show={this.state.extended} aHref="http://m.qdaily.com/mobile/tags/3.html"/>
+                                <MobileDrawerItem description="城市" show={this.state.extended} aHref="http://m.qdaily.com/mobile/tags/5.html"/>
+                                <MobileDrawerItem description="游戏" show={this.state.extended} aHref="http://m.qdaily.com/mobile/tags/54.html"/>
                             </ItemsCategoriesCanExtend>
-                            <MobileDrawerItem iconCategory="head_column" description="栏目中心" />
-                            <MobileDrawerItem iconCategory="head_flask" description="生活研究所" />
+                            <MobileDrawerItem iconCategory="head_column" description="栏目中心" aHref="http://m.qdaily.com/mobile/special_columns.html"/>
+                            <MobileDrawerItem iconCategory="head_flask" description="生活研究所" aHref="http://m.qdaily.com/mobile/labs.html"/>
                         </ItemsCategories>
                     </IscrollContainer>
                     <SidebarPanelFt>
                         <NameDescriptionHr style={{ marginBottom: ".64rem", }} />
                         <SidebarPanelFtBox>
-                            <DrawerSearch href="#moblieSearch">
+                            <DrawerSearch href="http://m.qdaily.com/mobile/searches">
                                 <MockInput>搜索
                             <HeadIcon category="head_search" style={{ width: 16, height: 16, fill: "hsla(0,0%,100%,.3)" }} />
                                 </MockInput>
                             </DrawerSearch>
-                            <AboutUs href="#aboutUs">关于我们</AboutUs>
+                            <AboutUs href="http://m.qdaily.com/mobile/aboutus.html">关于我们</AboutUs>
                         </SidebarPanelFtBox>
                     </SidebarPanelFt>
                     <OpenPanel showDrawer={this.state.showDrawer} onClick={this._onMenuClick}>

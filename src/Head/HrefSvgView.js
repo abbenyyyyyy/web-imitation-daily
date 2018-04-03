@@ -7,12 +7,12 @@ export default class HrefSvgView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            _color: typeof(this.props.style.color) === 'undefined' ? '#fff' : this.props.style.color,
+            _color: typeof (this.props.style.color) === 'undefined' ? '#fff' : this.props.style.color,
         }
     }
 
     handleMouseOut = () => {
-        this.setState({ _color: typeof(this.props.style.color) === 'undefined' ? '#fff' : this.props.style.color });
+        this.setState({ _color: typeof (this.props.style.color) === 'undefined' ? '#fff' : this.props.style.color });
     }
 
     handleMouseOver = () => {
@@ -26,7 +26,8 @@ export default class HrefSvgView extends Component {
                     display: "flex", alignItems: 'center', fontSize: '16px', textDecoration: 'none', color: this.state._color,
                     marginLeft: this.props.style.marginLeft
                 }}
-                href="#instutite" onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
+                href={this.props.link} target="_blank" rel="noopener noreferrer"
+                onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
                 <HeadIcon category={this.props.category} style={{
                     width: this.props.headIconWidth, height: this.props.headIconHeight,
                     fill: this.state._color, marginRight: this.props.headIconMarginRight
@@ -43,6 +44,7 @@ HrefSvgView.protoType = {
     headIconWidth: PropTypes.number,
     headIconHeight: PropTypes.number,
     headIconMarginRight: PropTypes.number,
+    link: PropTypes.string,
 }
 
 HrefSvgView.defaultProps = {

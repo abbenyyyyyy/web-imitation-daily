@@ -22,7 +22,8 @@ export default class ClassifySvgView extends Component {
 
     render() {
         return (
-            <a style={{ display: "flex", alignItems: "center", width: "70px", textDecoration: "none", zIndex: 2, }} href="#long"
+            <a style={{ display: "flex", alignItems: "center", width: "70px", textDecoration: "none", zIndex: 2, }}
+                href={this.props.link} target="_blank" rel="noopener noreferrer"
                 onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
                 <ClassifyIcon width={22} height={22} classify={this.props.classify} fill={this.state._color} />
                 <span style={{
@@ -38,6 +39,7 @@ export default class ClassifySvgView extends Component {
 
 ClassifySvgView.propType = {
     classify: PropTypes.string,
+    link: PropTypes.string,
 }
 
 ClassifySvgView.defaultProps = {
