@@ -6,7 +6,11 @@
 
 用react仿[好奇心日报首页](http://www.qdaily.com/)的一个练手项目。
 
-模块化，已完成头部组件以及轮播组件。
+[Demo地址](http://demo.abbenyyy.cn/)
+
+[服务端代码](https://github.com/abbenyyyyyy/imitation_daily)
+
+前后端分离； CSS in Js; 响应式界面，采用网易rem方案。
 
 ## 运行
 ```sh
@@ -14,8 +18,16 @@ npm install
 
 npm start
 ```
+## 依赖
 
-  
+- [axios](https://github.com/axios/axios)
+- [react-responsive](https://github.com/contra/react-responsive)
+- [styled-components](https://www.styled-components.com/)
+
+## 计划改进
+
+* SSR
+
 ## 联系方式
 
 Email:abbenyyyyyy@qq.com
