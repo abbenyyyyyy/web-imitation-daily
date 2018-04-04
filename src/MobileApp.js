@@ -41,7 +41,8 @@ export default class MobileApp extends Component {
         this._onMenuClick = this._onMenuClick.bind(this);
         this._onExtendClick = this._onExtendClick.bind(this);
         this._fetchMoreHomePageData = this._fetchMoreHomePageData.bind(this);
-        axios.defaults.baseURL = "http://127.0.0.1:8080";
+        axios.defaults.baseURL = "http://119.29.110.158:8080";
+        // axios.defaults.baseURL = "http://localhost:8080";
     }
 
     _onMenuClick() {
