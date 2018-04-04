@@ -24,7 +24,7 @@ export default class Head extends Component {
 			<AppHeader >
 				<PageHeader extended={this.props.headExtended} >
 					<SectionLeft >
-						<a href="#logo"
+						<a href="/"
 							style={Object.assign({}, styles.logoVertical, !this.props.headExtended && {
 								flexDirection: 'row', width: '125px', height: '60px', marginTop: '0px', marginRight: '0px',
 							})} >
@@ -35,9 +35,10 @@ export default class Head extends Component {
 								alt="head-text" />
 						</a>
 						<ItemsMainCatesClearfix >
-							<HrefSvgView category='head_flask' text='好奇心研究所' headIconWidth={21} headIconHeight={22} headIconMarginRight={12} />
+							<HrefSvgView category='head_flask' text='好奇心研究所' headIconWidth={21} headIconHeight={22} headIconMarginRight={12}
+								link="http://www.qdaily.com/labs.html" />
 							<HrefSvgView category='head_column' text='栏目中心' headIconWidth={22} headIconHeight={22} headIconMarginRight={7}
-								style={{ marginLeft: 40 }} />
+								style={{ marginLeft: 40 }} link="http://www.qdaily.com/special_columns.html" />
 						</ItemsMainCatesClearfix>
 					</SectionLeft>
 					<hr style={Object.assign({}, styles.hrHeightStyle, !this.props.headExtended && styles.hrHeightEnabledStyle)} />
@@ -47,34 +48,34 @@ export default class Head extends Component {
 					}}>
 						<ItemCates >
 							<ItemCate style={{ paddingLeft: '0px' }}>
-								<a href="#long-article">长文章</a>
+								<a href="http://www.qdaily.com/tags/1068.html" target="_blank" rel="noopener noreferrer">长文章</a>
 							</ItemCate>
 							<ItemCate>
-								<a href="#10graphs">10 个图</a>
+								<a href="http://www.qdaily.com/tags/1615.html" target="_blank" rel="noopener noreferrer">10 个图</a>
 							</ItemCate>
 							<ItemCate >
-								<a href="#top15">Top 15</a>
+								<a href="http://www.qdaily.com/tags/29.html" target="_blank" rel="noopener noreferrer">Top 15</a>
 							</ItemCate>
 							<ItemCate >
-								<a href="#business">商业</a>
+								<a href="http://www.qdaily.com/categories/18.html" target="_blank" rel="noopener noreferrer">商业</a>
 							</ItemCate>
 							<ItemCate >
-								<a href="#function">智能</a>
+								<a href="http://www.qdaily.com/categories/4.html" target="_blank" rel="noopener noreferrer">智能</a>
 							</ItemCate>
 							<ItemCate >
-								<a href="#desgin">设计</a>
+								<a href="http://www.qdaily.com/categories/17.html" target="_blank" rel="noopener noreferrer">设计</a>
 							</ItemCate>
 							<ItemCate style={{ display: this.props.headExtended ? 'inline-block' : 'none' }}>
-								<a href="#fashion">时尚</a>
+								<a href="http://www.qdaily.com/categories/19.html" target="_blank" rel="noopener noreferrer">时尚</a>
 							</ItemCate>
 							<ItemCate style={{ display: this.props.headExtended ? 'inline-block' : 'none' }}>
-								<a href="#entertainment">娱乐</a>
+								<a href="http://www.qdaily.com/categories/3.html" target="_blank" rel="noopener noreferrer">娱乐</a>
 							</ItemCate>
 							<ItemCate style={{ display: this.props.headExtended ? 'inline-block' : 'none' }}>
-								<a href="#city">城市</a>
+								<a href="http://www.qdaily.com/categories/5.html" target="_blank" rel="noopener noreferrer">城市</a>
 							</ItemCate>
 							<ItemCate style={{ display: this.props.headExtended ? 'inline-block' : 'none' }}>
-								<a href="#game">游戏</a>
+								<a href="http://www.qdaily.com/categories/54.html" target="_blank" rel="noopener noreferrer">游戏</a>
 							</ItemCate>
 						</ItemCates>
 						<div style={{
@@ -92,9 +93,9 @@ export default class Head extends Component {
 						width: this.props.headExtended ? '350px' : '520px',
 					}} >
 						<hr style={Object.assign({}, styles.hrHeightStyle, !this.props.headExtended && styles.hrHeightEnabledStyle)} />
-						<GoDownloadApp href="#download">APP</GoDownloadApp>
+						<GoDownloadApp href="http://www.qdaily.com/aboutus.html" target="_blank" rel="noopener noreferrer">APP</GoDownloadApp>
 						<hr style={Object.assign({}, styles.hrHeightStyle, !this.props.headExtended && styles.hrHeightEnabledStyle)} />
-						<GoSearch href="#search" >
+						<GoSearch href="http://www.qdaily.com/searches"  target="_blank" rel="noopener noreferrer">
 							<HeadIcon category='head_search' style={{ width: 19, height: 23, fill: '#fff' }} />
 						</GoSearch>
 						<hr style={Object.assign({}, styles.hrHeightStyle, !this.props.headExtended && styles.hrHeightEnabledStyle)} />
@@ -108,8 +109,8 @@ export default class Head extends Component {
 							<a href="#login">登录</a>
 							<a href="#signout" style={{ visibility: 'hidden' }}>退出</a>
 						</HeadUser>
-						<HeadAboutUs href="#aboutUs" >关于我们</HeadAboutUs>
-						<IconWeibo href="#weibo" >
+						<HeadAboutUs href="http://www.qdaily.com/aboutus.html" target="_blank" rel="noopener noreferrer">关于我们</HeadAboutUs>
+						<IconWeibo href="http://weibo.com/qdaily" target="_blank" rel="noopener noreferrer">
 							<HeadIcon category='head_weibo' style={{ width: 20, height: 20, fill: '#fff' }} />
 						</IconWeibo>
 						<IconWechat href="#wechat" >
@@ -124,36 +125,36 @@ export default class Head extends Component {
 				}}>
 					<ul>
 						<li style={Object.assign({}, styles.classifyStyle, this.state.moreShow && { visibility: "visible" })}>
-							<ClassifySvgView classify="长文章" />
+							<ClassifySvgView classify="长文章" link="http://www.qdaily.com/tags/1068.html"/>
 						</li>
 						<li style={Object.assign({}, styles.classifyStyle, this.state.moreShow && { visibility: "visible" })}>
-							<ClassifySvgView classify="10个图" />
+							<ClassifySvgView classify="10个图" link="http://www.qdaily.com/tags/1615.html"/>
 						</li>
 						<li style={Object.assign({}, styles.classifyStyle, this.state.moreShow && { visibility: "visible" })}>
-							<ClassifySvgView classify="top15" />
+							<ClassifySvgView classify="top15" link="http://www.qdaily.com/tags/29.html"/>
 						</li>
 						<li style={Object.assign({}, styles.classifyStyle, this.state.moreShow && { visibility: "visible" })}>
-							<ClassifySvgView classify="商业" />
+							<ClassifySvgView classify="商业" link="http://www.qdaily.com/categories/18.html"/>
 						</li>
 						<li style={Object.assign({}, styles.classifyStyle, this.state.moreShow && { visibility: "visible" })}>
-							<ClassifySvgView classify="智能" />
+							<ClassifySvgView classify="智能" link="http://www.qdaily.com/categories/4.html"/>
 						</li>
 					</ul>
 					<ul>
 						<li style={Object.assign({}, styles.classifyStyle, this.state.moreShow && { visibility: "visible" })}>
-							<ClassifySvgView classify="设计" />
+							<ClassifySvgView classify="设计" link="http://www.qdaily.com/categories/17.html"/>
 						</li>
 						<li style={Object.assign({}, styles.classifyStyle, this.state.moreShow && { visibility: "visible" })}>
-							<ClassifySvgView classify="时尚" />
+							<ClassifySvgView classify="时尚" link="http://www.qdaily.com/categories/19.html"/>
 						</li>
 						<li style={Object.assign({}, styles.classifyStyle, this.state.moreShow && { visibility: "visible" })}>
-							<ClassifySvgView classify="娱乐" />
+							<ClassifySvgView classify="娱乐" link="http://www.qdaily.com/categories/3.html"/>
 						</li>
 						<li style={Object.assign({}, styles.classifyStyle, this.state.moreShow && { visibility: "visible" })}>
-							<ClassifySvgView classify="城市" />
+							<ClassifySvgView classify="城市" link="http://www.qdaily.com/categories/5.html"/>
 						</li>
 						<li style={Object.assign({}, styles.classifyStyle, this.state.moreShow && { visibility: "visible" })}>
-							<ClassifySvgView classify="游戏" />
+							<ClassifySvgView classify="游戏" link="http://www.qdaily.com/categories/54.html"/>
 						</li>
 					</ul>
 				</div>
