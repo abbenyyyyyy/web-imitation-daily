@@ -335,7 +335,7 @@ const PackeryDowload = styled.a`
 `;
 
 const PackeryContainerArticles = styled.div`
-    width:1010px;//23寸
+    width:1010px;
     margin-top:5px;
     display: flex;
 	justify-content:space-between;

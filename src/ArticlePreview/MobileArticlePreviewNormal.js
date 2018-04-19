@@ -8,7 +8,7 @@ import CategoryView from '../mobileImg/CategoryView';
 export default class MobileArticlePreviewNormal extends Component {
     render() {
         let nowDate = new Date();
-        let date = new Date(this.props.articlePreviewData.createTime);
+        let date = new Date(this.props.articlePreviewData.createTime.replace(/\-/g, "/"));
         let printTime;
         if (date.getFullYear() === nowDate.getFullYear() && date.getMonth() === nowDate.getMonth() && date.getDate() === nowDate.getDate()) {
             //今天，计算几个小时前
