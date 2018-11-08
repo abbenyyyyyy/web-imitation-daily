@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { injectGlobal } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 import Banner from './Banner/Banner';
 import DefaultHeadSvg from './mobileImg/DefaultHeadSvg'
@@ -12,8 +12,8 @@ import MobileArticlePreviewNormal from './ArticlePreview/MobileArticlePreviewNor
 import MobileArticlePreviewZero from './ArticlePreview/MobileArticlePreviewZero';
 import MobileArticlePreviewTwo from './ArticlePreview/MobileArticlePreviewTwo';
 
-injectGlobal`
-    body{
+const GlobalStyle = createGlobalStyle`
+  body{
         margin: 0;
         padding: 0;
         background-color: #eee;
@@ -22,7 +22,7 @@ injectGlobal`
         font-family: Arial,STHeiti,华文黑体,Microsoft YaHei,微软雅黑,SimSun,宋体,Helvetica,Tahoma,Arial sans-serif;
         line-height: 1.5;
     }
-`;
+`
 
 export default class MobileApp extends Component {
 
@@ -158,6 +158,7 @@ export default class MobileApp extends Component {
         let loadMore = this.state.hasMore ? null : <p style={{ fontSize: "18px", color: "#bbb" }}>没有更多啦</p>;
         return (
             <MobileAppContainer >
+                <GlobalStyle />
                 <MobileHead>
                     <a href="/" style={{ display: "flex", }}>
                         <img src={require("./mobileImg/mobilelogo.png")} style={{ width: "83.48px", height: "38px" }} alt="mobilelogo" />
@@ -369,7 +370,7 @@ const ItemsCategories = styled.ul`
     flex-direction:column;
 `;
 
-const ItemsCategoriesCanExtend = ItemsCategories.extend`
+const ItemsCategoriesCanExtend = styled(ItemsCategories)`
     height: ${props => props.show ? "17.92rem" : "0"};
     visibility:${props => props.show ? "visible" : "hidden"};
     transition:all 0.4s;

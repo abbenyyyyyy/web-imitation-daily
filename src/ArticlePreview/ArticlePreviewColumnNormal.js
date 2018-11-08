@@ -83,7 +83,7 @@ const ImgPreviewContainer = styled.div`
     height: 185px;
 `;
 
-const ImgPreviewContainerImgBox = ImgPreviewContainer.extend`
+const ImgPreviewContainerImgBox = styled(ImgPreviewContainer)`
     overflow: hidden;
 `;
 

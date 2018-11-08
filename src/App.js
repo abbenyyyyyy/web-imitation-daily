@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import axios from 'axios';
-import { injectGlobal } from 'styled-components';
 
 import Head from './Head/Head.js';
 import Banner from './Banner/Banner';
@@ -12,15 +12,15 @@ import ArticlePreviewNull from './ArticlePreview/ArticlePreviewNull';
 import Footer from './Footer/Footer';
 import Loading from './loading/Loading';
 
-injectGlobal`
-    body{
+const GlobalStyle = createGlobalStyle`
+  body{
         margin: 0;
         padding: 0;
         font-size: 14px;
         font-family: Arial, "Hiragino Sans GB", 冬青黑, "Microsoft YaHei", 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, "Arial sans-serif";
         word-break: keep-all; 
     }
-`;
+`
 
 export default class App extends Component {
 
@@ -208,6 +208,7 @@ export default class App extends Component {
 
 		return (
 			<AppContainer >
+				<GlobalStyle />
 				<Head headExtended={this.state.headExtended} />
 				<PageContent >
 					<PackeryContainer >

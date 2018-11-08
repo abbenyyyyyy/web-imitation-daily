@@ -50,7 +50,7 @@ const ImgPreviewContainer = styled.div`
     height: ${props => props.normalSize ? "280px" : "320px"};
 `;
 
-const ImgPreviewContainerImgBox = ImgPreviewContainer.extend`
+const ImgPreviewContainerImgBox = styled(ImgPreviewContainer)`
     overflow: hidden;
     width: ${props => props.normalSize ? "500px" : "670px"};
     height: ${props => props.normalSize ? "280px" : "320px"};
